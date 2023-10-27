@@ -18,10 +18,7 @@ public class GameControllerMainMenu : MonoBehaviour
         MainMenu.SetActive(true);
         SettingsMenu.SetActive(false);
 
-        
-
     }
-
 
     public void PlayGame()
     {
