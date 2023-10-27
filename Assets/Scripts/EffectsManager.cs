@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EffectsManager : MonoBehaviour
 {
-    public static EffectsManager Instance { get; set; }
+    public static EffectsManager Instance { get; private set; }
 
     public EffectsManager()
     {
