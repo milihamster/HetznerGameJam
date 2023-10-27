@@ -9,6 +9,10 @@ public class AnimalFish : Animal
 
     void LateUpdate()
     {
+        // If above water
+        //if (transform.position.y > 0)
+            
+
         // Reset speed to _maxSpeed if the Rigidbody is moving too fast
         if (_rigidbody.velocity.magnitude > _maxSpeed)
             _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
