@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameControllerScript : MonoBehaviour
 {
@@ -40,5 +41,9 @@ public class GameControllerScript : MonoBehaviour
         Time.timeScale = 1f;
         GameIsRunning = true;
     
-    }    
+    }
+    public void Exit()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

@@ -10,13 +10,32 @@ public class GameControllerMainMenu : MonoBehaviour
     public GameObject MainMenu;
     public GameObject SettingsMenu;
 
+    public float popDuration = 1; 
+    public Vector3 startScale = Vector3.zero;
+    public Vector3 endScale = Vector3.one;
 
     void Start()
     {
 
-        GameName.SetActive(true);
-        MainMenu.SetActive(true);
+
         SettingsMenu.SetActive(false);
+        Animation(GameName, 1);
+        Animation(MainMenu, 2);
+
+
+
+
+    }
+
+    public void Animation(GameObject targetObject, float delay)
+    {
+        targetObject.transform.localScale = startScale;
+        targetObject.SetActive(true);
+        
+        LeanTween.scale(targetObject, endScale, popDuration)
+            .setEase(LeanTweenType.easeInOutElastic).setDelay(delay); 
+
+
 
     }
 
