@@ -23,7 +23,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else {
             Resume();
-        }
+        } 
         
     
     }
