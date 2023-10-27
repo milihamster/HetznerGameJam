@@ -13,6 +13,7 @@ public class Soundmanager : MonoBehaviour
         if(!PlayerPrefs.HasKey("musicVolume")){
             PlayerPrefs.SetFloat("musicVolume", 1);
             Load();
+            
         }
         else{
             Load();
