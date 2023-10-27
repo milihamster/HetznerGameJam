@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Controls))]
 public abstract class Animal : MonoBehaviour
@@ -9,6 +10,8 @@ public abstract class Animal : MonoBehaviour
     protected SpriteRenderer _spriteRenderer;
 
     protected Controls _controls;
+
+    protected UnityEvent _onDeath;
 
     // Start is called before the first frame update
     void Start()

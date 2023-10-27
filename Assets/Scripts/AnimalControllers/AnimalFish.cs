@@ -9,8 +9,6 @@ public class AnimalFish : Animal
 
     void LateUpdate()
     {
-        _rigidbody.AddForce(new(_controls.MovementHorizontal * 5, _controls.MovementVertical * 5));
-
         // Reset speed to _maxSpeed if the Rigidbody is moving too fast
         if (_rigidbody.velocity.magnitude > _maxSpeed)
             _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
@@ -20,5 +18,10 @@ public class AnimalFish : Animal
             _spriteRenderer.flipX = true;
         else if(_rigidbody.velocity.x > 0)
             _spriteRenderer.flipX = false;
+    }
+
+    void FixedUpdate()
+    {
+        _rigidbody.AddForce(new(_controls.MovementHorizontal * 50, _controls.MovementVertical * 50));
     }
 }
