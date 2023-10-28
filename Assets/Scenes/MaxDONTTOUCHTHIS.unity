@@ -2641,6 +2641,8 @@ MonoBehaviour:
     Amount: 7
   - AnimalSo: {fileID: 11400000, guid: 1bd20b04ab9a4f246a67658567223d65, type: 2}
     Amount: 4
+  - AnimalSo: {fileID: 11400000, guid: 3bdfeda8baf546cd39daf700dbf9e9cb, type: 2}
+    Amount: 10
 --- !u!4 &1615667362
 Transform:
   m_ObjectHideFlags: 0

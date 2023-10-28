@@ -74,7 +74,12 @@ public abstract class Animal : MonoBehaviour
                 AddExperience(animal.Experience * 25);
 
                 if (Experience >= AnimalSo.XpUntilLevelup)
+                {
+                    EffectsManager.Instance.SpawnEffect(
+                        GlobalDataSo.Instance.PrefabLevelUpEffect,
+                        transform.position);
                     _spawnManager.LevelUp(this);
+                }
 
                 LeanTween.move(gameObject, animal.transform.position, 0.5f)
                     .setEaseInOutBounce();

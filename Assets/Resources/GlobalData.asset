@@ -22,4 +22,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 887d7c03ee338d54997bce12fb832451, type: 2}
   - {fileID: 11400000, guid: 1bd20b04ab9a4f246a67658567223d65, type: 2}
   PrefabDefaultDeathEffect: {fileID: 2353600328317590899, guid: ceec7516237b4104b94300043ca39784, type: 3}
+  PrefabLevelUpEffect: {fileID: 9157105887693468085, guid: c4f829cb7dd4b864caf8832ec5b1ee55, type: 3}
   PrefabCanvasExperience: {fileID: 0}
