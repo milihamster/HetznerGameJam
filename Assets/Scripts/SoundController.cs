@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SoundController : MonoBehaviour
 {
     [SerializeField] private AudioSource backgroundMusic, collitionSound;
+  
     public static SoundController Instance;
 
     private void Awake()
@@ -19,6 +23,7 @@ public class SoundController : MonoBehaviour
             Destroy(gameObject);
         }
         this.PlayBackgroundMusic();
+     
     }
 
     public void PlayBackgroundMusic()
@@ -31,5 +36,10 @@ public class SoundController : MonoBehaviour
         collitionSound.Play();
     }
 
+
+
+
+  
+  
 
 }

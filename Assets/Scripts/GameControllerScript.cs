@@ -13,6 +13,8 @@ public class GameControllerScript : MonoBehaviour
     public Vector3 endScale = Vector3.one;
 
     public bool GameIsRunning = true;
+
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)){

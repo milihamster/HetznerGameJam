@@ -43,7 +43,7 @@ public class GameControllerMainMenu : MonoBehaviour
     public void PlayGame()
     {
         LeanTween.scale(gameObject, endScale, 0.5f);
-        SceneManager.LoadScene("MaxTestingScene");
+        SceneManager.LoadScene("Game");
 
     }
 
