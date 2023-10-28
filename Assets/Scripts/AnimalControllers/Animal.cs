@@ -38,11 +38,16 @@ public abstract class Animal : MonoBehaviour
 
     void Update()
     {
-<<<<<<< HEAD
-        if(_controls.Attack)
+        if (_controls.Attack)
         {
             Attack();
         }
+
+        // Flip if Animal is heading the other way
+        if (_rigidbody.velocity.x < 0)
+            transform.localScale = Vector3.one * _size;
+        else if (_rigidbody.velocity.x > 0)
+            transform.localScale = new Vector3(-_size, _size, _size);
     }
 
     protected void Attack()
@@ -84,13 +89,6 @@ public abstract class Animal : MonoBehaviour
             targetList.Remove(collision.gameObject);
         }
     }
-=======
-        // Flip if Animal is heading the other way
-        if (_rigidbody.velocity.x < 0)
-            transform.localScale = Vector3.one * _size;
-        else if (_rigidbody.velocity.x > 0)
-            transform.localScale = new Vector3(-_size, _size, _size);
-    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -103,6 +101,4 @@ public abstract class Animal : MonoBehaviour
         if (collision.collider.tag == "Ground")
             IsGrounded = false;
     }
-
->>>>>>> ae963d0f3dfb6acdce6f6b024192aaa0c2ffb3fc
 }
