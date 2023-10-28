@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class SoundController : MonoBehaviour
 {
-    [SerializeField] private AudioSource backgroundMusic, effecSource;
+    [SerializeField] private AudioSource backgroundMusic, effectSource;
 
     public static SoundController Instance;
 
@@ -42,7 +42,7 @@ public class SoundController : MonoBehaviour
     public void PlaySoundEffect(AudioClip clip)
     {
 
-        effecSource.PlayOneShot(clip);
+        effectSource.PlayOneShot(clip);
     }
 
 
