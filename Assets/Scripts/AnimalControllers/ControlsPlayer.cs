@@ -14,4 +14,9 @@ public class ControlsPlayer : Controls
         Attack = Input.GetKeyDown(KeyCode.Space);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        SoundController.Instance.PlayCollitionSound();
+    }
+
 }

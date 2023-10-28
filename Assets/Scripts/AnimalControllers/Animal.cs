@@ -12,6 +12,7 @@ public abstract class Animal : MonoBehaviour
     public AnimalType animalType;
 
     protected Rigidbody2D _rigidbody;
+    protected Collider2D _collider;
     protected SpriteRenderer _spriteRenderer;
 
     protected Controls _controls;
@@ -22,7 +23,10 @@ public abstract class Animal : MonoBehaviour
     List<GameObject> targetList;
 
 
-    // Start is called before the first frame update
+    protected float _size = 1;
+
+    public bool IsGrounded;
+
     void Start()
     {
         spawnManager = SpawnManager.Instance;
@@ -34,6 +38,7 @@ public abstract class Animal : MonoBehaviour
 
     void Update()
     {
+<<<<<<< HEAD
         if(_controls.Attack)
         {
             Attack();
@@ -79,4 +84,25 @@ public abstract class Animal : MonoBehaviour
             targetList.Remove(collision.gameObject);
         }
     }
+=======
+        // Flip if Animal is heading the other way
+        if (_rigidbody.velocity.x < 0)
+            transform.localScale = Vector3.one * _size;
+        else if (_rigidbody.velocity.x > 0)
+            transform.localScale = new Vector3(-_size, _size, _size);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Ground")
+            IsGrounded = true;
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Ground")
+            IsGrounded = false;
+    }
+
+>>>>>>> ae963d0f3dfb6acdce6f6b024192aaa0c2ffb3fc
 }
