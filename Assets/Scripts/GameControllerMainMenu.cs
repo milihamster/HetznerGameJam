@@ -19,7 +19,7 @@ public class GameControllerMainMenu : MonoBehaviour
     void Start()
     {
 
-
+        
         SettingsMenu.SetActive(false);
         Credits.SetActive(false);
         Animation(GameName, 0.5f);
