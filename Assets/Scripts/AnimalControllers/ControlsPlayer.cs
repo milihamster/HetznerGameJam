@@ -16,7 +16,7 @@ public class ControlsPlayer : Controls
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SoundController.Instance.PlayCollitionSound();
+      
     }
 
 }
