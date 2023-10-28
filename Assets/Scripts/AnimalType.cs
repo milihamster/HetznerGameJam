@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType
+public enum AnimalType
 {
     SeaCreature1,
     SeaCreature2,

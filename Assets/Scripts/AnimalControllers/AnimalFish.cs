@@ -12,6 +12,8 @@ public class AnimalFish : Animal
         // Reset speed to _maxSpeed if the Rigidbody is moving too fast
         if (_rigidbody.velocity.magnitude > _maxSpeed)
             _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
+
+        _onDeath.AddListener(() => OnDeath());
     }
 
     void FixedUpdate()
@@ -21,5 +23,11 @@ public class AnimalFish : Animal
         // If above water
         if (transform.position.y > 0)
             _rigidbody.AddForce(new(0, -50));
+    }
+
+    void OnDeath()
+    {
+        Destroy(gameObject);
+        SpawnManager.Instance.RespawnPlayer();
     }
 }

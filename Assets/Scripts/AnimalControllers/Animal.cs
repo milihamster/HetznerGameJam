@@ -6,13 +6,22 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Controls))]
 public abstract class Animal : MonoBehaviour
 {
+    public float expCurrent;
+    public float expToUpgrade;
+    public float expDefault;
+    public AnimalType animalType;
+
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;
     protected SpriteRenderer _spriteRenderer;
 
     protected Controls _controls;
 
-    protected UnityEvent _onDeath;
+    public UnityEvent _onDeath;
+
+    SpawnManager spawnManager;
+    List<GameObject> targetList;
+
 
     protected float _size = 1;
 
@@ -20,18 +29,65 @@ public abstract class Animal : MonoBehaviour
 
     void Start()
     {
+        spawnManager = SpawnManager.Instance;
         _controls = GetComponent<Controls>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     void Update()
     {
+        if (_controls.Attack)
+        {
+            Attack();
+        }
+
         // Flip if Animal is heading the other way
         if (_rigidbody.velocity.x < 0)
             transform.localScale = Vector3.one * _size;
         else if (_rigidbody.velocity.x > 0)
             transform.localScale = new Vector3(-_size, _size, _size);
+    }
+
+    protected void Attack()
+    {
+        foreach (GameObject target in targetList)
+        {
+            Animal animalComponent = target.GetComponent<Animal>();
+
+            if (expCurrent > animalComponent.expCurrent)
+            {
+                expCurrent += animalComponent.expCurrent;
+
+                animalComponent._onDeath.Invoke();
+
+                if (expCurrent >= expToUpgrade)
+                {
+                    spawnManager.LevelUp(gameObject);
+                }
+            }
+            else
+            {
+                //TODO: Die?
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out Animal animal))
+        {
+            targetList.Add(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (targetList.Contains(collision.gameObject))
+        {
+            targetList.Remove(collision.gameObject);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -45,5 +101,4 @@ public abstract class Animal : MonoBehaviour
         if (collision.collider.tag == "Ground")
             IsGrounded = false;
     }
-
 }
