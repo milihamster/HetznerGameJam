@@ -48,16 +48,16 @@ public abstract class Animal : MonoBehaviour
             Attack();
 
         // Flip if Animal is heading the other way
-        if (_rigidbody.velocity.x < 0)
+        if (_rigidbody.velocity.x < -0.1f)
             transform.localScale = Vector3.one * _size;
-        else if (_rigidbody.velocity.x > 0)
+        else if (_rigidbody.velocity.x > 0.1f)
             transform.localScale = new Vector3(-_size, _size, _size);
     }
 
     public void Attack()
     {
         var animal = _attackTrigger.TargetList.FirstOrDefault();
-        if(animal != null)
+        if (animal != null)
         {
             if (expCurrent > animal.expCurrent)
             {

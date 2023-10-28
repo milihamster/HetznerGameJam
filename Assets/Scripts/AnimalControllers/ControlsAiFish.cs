@@ -40,15 +40,14 @@ public class ControlsAiFish : Controls
         MovementVertical = _targetPosition.y - transform.position.y;
         MovementHorizontal = _targetPosition.x - transform.position.x;
 
+        if (Mathf.Abs(MovementHorizontal) < 0.1f)
+        {
+            MovementHorizontal = 0;
+        }
+
         if (MovementHorizontal > _speed)
             MovementHorizontal = _speed;
         else if (MovementHorizontal < -_speed)
             MovementHorizontal = -_speed;
-
-        if (MovementVertical > _speed)
-            MovementVertical = _speed;
-        else if (MovementVertical < -_speed)
-            MovementVertical = -_speed;
-
     }
 }
