@@ -8,8 +8,8 @@ using UnityEngine;
 /// </summary>
 public abstract class Controls : MonoBehaviour
 {
-    public float MovementHorizontal { get; protected set; }
-    public float MovementVertical { get; protected set; }
+    public float MovementHorizontal;
+    public float MovementVertical;
     public bool Attack { get; protected set; }
     public bool Special { get; protected set; }
 
