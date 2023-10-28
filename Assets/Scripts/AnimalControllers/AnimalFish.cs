@@ -19,6 +19,7 @@ public class AnimalFish : Animal
         else if (_rigidbody.velocity.x > 0)
             _spriteRenderer.flipX = true;
 
+        _onDeath.AddListener(() => OnDeath());
     }
 
     void FixedUpdate()
@@ -28,5 +29,11 @@ public class AnimalFish : Animal
         // If above water
         if (transform.position.y > 0)
             _rigidbody.AddForce(new(0, -50));
+    }
+
+    void OnDeath()
+    {
+        Destroy(gameObject);
+        SpawnManager.Instance.RespawnPlayer();
     }
 }

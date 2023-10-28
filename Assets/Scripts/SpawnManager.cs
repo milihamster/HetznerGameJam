@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -32,50 +33,89 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RespawnPlayer();
         InitializeEnemies();
         InvokeRepeating("SpawnPlanctons", 0, planctonSpawnRate);
     }
 
-    public void SpawnEnemy(EnemyType enemy)
+    public void RespawnPlayer()
     {
-        // Bereich
-        GameObject chosenEnemy;
+        SpawnObject(seaCreature1, spawnAreaSea, false);
+    }
+
+    public void ReSpawnEnemy(GameObject enemy)
+    {
         Transform chosenArea;
+        Animal animalComponent = enemy.GetComponent<Animal>();
         bool grounded = false;
 
-        switch (enemy)
+        switch (animalComponent.animalType)
         {
-            case EnemyType.SeaCreature1:
-                chosenEnemy = seaCreature1;
+            case AnimalType.SeaCreature1:
                 chosenArea = spawnAreaSea;
                 break;
-            case EnemyType.SeaCreature2:
-                chosenEnemy = seaCreature2;
+            case AnimalType.SeaCreature2:
                 chosenArea = spawnAreaSea;
                 break;
-            case EnemyType.LandCreature1:
-                chosenEnemy = landCreature1 ;
+            case AnimalType.LandCreature1:
                 grounded = true;
                 chosenArea = spawnAreaLand;
                 break;
-            case EnemyType.LandCreature2:
-                chosenEnemy = landCreature2;
+            case AnimalType.LandCreature2:
                 grounded = true;
                 chosenArea = spawnAreaLand;
                 break;
-            case EnemyType.SkyCreature1:
-                chosenEnemy = skyCreature1;
+            case AnimalType.SkyCreature1:
                 chosenArea = spawnAreaSky;
                 break;
-            case EnemyType.SkyCreature2:
-                chosenEnemy = skyCreature2;
+            case AnimalType.SkyCreature2:
                 chosenArea = spawnAreaSky;
                 break;
             default:
                 throw new Exception("Missing enemy type");
         }
 
-        SpawnObject(chosenEnemy, chosenArea, grounded);
+        SpawnObject(enemy, chosenArea, grounded);
+    }
+
+    public void LevelUp(GameObject target) 
+    {
+        Animal animalComponent = target.GetComponent<Animal>();
+
+        GameObject newForm = target.gameObject;
+        Vector3 spawnPosition = target.transform.position;
+
+        switch (animalComponent.animalType)
+        {
+            case AnimalType.SeaCreature1:
+                newForm = seaCreature2;
+                break;
+            case AnimalType.SeaCreature2:
+                newForm = landCreature1;
+                break;
+            case AnimalType.LandCreature1:
+                newForm = landCreature2;
+                RaycastHit hit;
+                if (Physics.Raycast(spawnPosition, -Vector3.up, out hit))
+                {
+                    spawnPosition.y = hit.point.y;
+                }
+                break;
+            case AnimalType.LandCreature2:
+                newForm = skyCreature1;
+                break;
+            case AnimalType.SkyCreature1:
+                newForm = skyCreature2;
+                break;
+            case AnimalType.SkyCreature2:
+                break;
+            default:
+                throw new Exception("Missing enemy type");
+        }
+
+        //TODO: LevelUpAnimation
+        Instantiate(newForm, spawnPosition, target.transform.rotation);
+        Destroy(target);
     }
 
     void InitializeEnemies()
@@ -90,14 +130,16 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i < planctonSpawnAmount; i++)
         {
-            SpawnObject(seaCreature1, spawnAreaSea, true);
+            SpawnObject(plancton, spawnAreaSea, true);
         }
     }
 
     void SpawnObject(GameObject obj, Transform area, bool grounded)
     {
         // Bereich
-        Vector3 spawnPoint = new Vector3(area.localScale.x, area.localScale.y);
+        float randomX = UnityEngine.Random.Range(0, area.localScale.x);
+        float randomY = UnityEngine.Random.Range(0, area.localScale.y);
+        Vector3 spawnPoint = new Vector3(randomX, randomY);
         if(grounded)
         {
             RaycastHit hit;

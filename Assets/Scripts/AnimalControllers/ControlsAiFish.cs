@@ -51,5 +51,4 @@ public class ControlsAiFish : Controls
             MovementVertical = -_speed;
 
     }
-
 }
