@@ -134,6 +134,7 @@ MonoBehaviour:
   expToUpgrade: 0
   expDefault: 0
   animalType: 0
+  AnimalSo: {fileID: 11400000, guid: 887d7c03ee338d54997bce12fb832451, type: 2}
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
