@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Controls))]
 public abstract class Animal : MonoBehaviour
 {
+    [SerializeField]
+    private ParticleSystem _prefabDeathParticles;
+
     public float expCurrent;
     public float expToUpgrade;
     public float expDefault;
@@ -14,14 +18,13 @@ public abstract class Animal : MonoBehaviour
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;
     protected SpriteRenderer _spriteRenderer;
+    protected AnimalAttackTrigger _attackTrigger;
 
     protected Controls _controls;
 
-    public UnityEvent _onDeath;
+    public UnityEvent OnDeath;
 
     SpawnManager spawnManager;
-    List<GameObject> targetList;
-
 
     protected float _size = 1;
 
@@ -30,9 +33,11 @@ public abstract class Animal : MonoBehaviour
     void Start()
     {
         spawnManager = SpawnManager.Instance;
-        _controls = GetComponent<Controls>();
+        var controlComponents = GetComponents<Controls>();
+        _controls = controlComponents.FirstOrDefault(x => x.enabled);
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _attackTrigger = GetComponentInChildren<AnimalAttackTrigger>();
 
         _collider = GetComponent<Collider2D>();
     }
@@ -40,9 +45,7 @@ public abstract class Animal : MonoBehaviour
     void Update()
     {
         if (_controls.Attack)
-        {
             Attack();
-        }
 
         // Flip if Animal is heading the other way
         if (_rigidbody.velocity.x < 0)
@@ -51,44 +54,35 @@ public abstract class Animal : MonoBehaviour
             transform.localScale = new Vector3(-_size, _size, _size);
     }
 
-    protected void Attack()
+    public void Attack()
     {
-        foreach (GameObject target in targetList)
+        var animal = _attackTrigger.TargetList.FirstOrDefault();
+        if(animal != null)
         {
-            Animal animalComponent = target.GetComponent<Animal>();
-
-            if (expCurrent > animalComponent.expCurrent)
+            if (expCurrent > animal.expCurrent)
             {
-                expCurrent += animalComponent.expCurrent;
-
-                animalComponent._onDeath.Invoke();
+                expCurrent += animal.expCurrent;
 
                 if (expCurrent >= expToUpgrade)
                 {
-                    spawnManager.LevelUp(gameObject);
+                    //spawnManager.LevelUp(gameObject);
                 }
+
+                animal.Kill();
             }
             else
             {
-                //TODO: Die?
+                // TODO: Make them attack me instead for animation?
+                Kill();
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Kill()
     {
-        if (collision.gameObject.TryGetComponent(out Animal animal))
-        {
-            targetList.Add(collision.gameObject);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (targetList.Contains(collision.gameObject))
-        {
-            targetList.Remove(collision.gameObject);
-        }
+        OnDeath.Invoke();
+        EffectsManager.Instance.SpawnEffect(_prefabDeathParticles.gameObject, transform.position);
+        Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -16,10 +16,11 @@ public class AnimalGround : Animal
 
         // Jump if animal is on ground
         if (_controls.Special && IsGrounded)
-        {
-            print("On Ground and Jumping!");
             _rigidbody.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
-        }
+
+        // Kill if drowning
+        if (transform.position.y < -1)
+            Kill();
     }
 
     void FixedUpdate()
