@@ -237,11 +237,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabDeathParticles: {fileID: 2708598583397607910, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
-  expCurrent: 0
-  expToUpgrade: 0
-  expDefault: 0
-  animalType: 0
+  Experience: 40
+  AnimalSo: {fileID: 11400000, guid: d0be981d29f19804dacf33898c9121db, type: 2}
   OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExperience:
     m_PersistentCalls:
       m_Calls: []
   IsGrounded: 0

@@ -11,18 +11,18 @@ public class EffectsManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SpawnEffect(GameObject effect, Transform origin)
+    public void SpawnEffect(ParticleSystem effect, Transform origin)
     {
         Instantiate(effect, origin);
     }
 
-    public void SpawnEffect(GameObject effect, Transform origin, Vector3 offset)
+    public void SpawnEffect(ParticleSystem effect, Transform origin, Vector3 offset)
     {
         Vector3 newPosition = origin.position + offset;
         Instantiate(effect, newPosition, origin.rotation);
     }
 
-    public void SpawnEffect(GameObject effect, Vector3 position)
+    public void SpawnEffect(ParticleSystem effect, Vector3 position)
     {
         Instantiate(effect, position, effect.transform.rotation);
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // TODO: Fix weird blue flash
@@ -22,7 +23,15 @@ public class CameraController : MonoBehaviour
 
         // Automatically choose Player as Target if there isn't any
         if (Target == null)
-            Target = Transform.FindObjectOfType<ControlsPlayer>()?.transform;
+        {
+            var targets = Transform.FindObjectsOfType<ControlsPlayer>();
+            Target = targets.FirstOrDefault(x => x.isActiveAndEnabled).transform; 
+        }
+    }
+
+    public void SetCameraSize(float newSize)
+    {
+        _camera.orthographicSize = newSize;
     }
 
     void Update()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlsAiBird : Controls
+public class ControlsAiBird : ControlsAi
 {
     public Vector3 _targetPosition;
 
@@ -42,8 +42,6 @@ public class ControlsAiBird : Controls
             var hits = Physics2D.RaycastAll(transform.position, _targetPosition, _range, LayerMask.GetMask("World"));
             if (hits.Length <= 1)
                 _positionCooldown = Random.Range(0, _startCooldown);
-            else
-                print($"Found {hits.Length} hits");
         }
         else if (Vector3.Distance(_targetPosition, transform.position) < 0.25f)
             _positionCooldown = 0;

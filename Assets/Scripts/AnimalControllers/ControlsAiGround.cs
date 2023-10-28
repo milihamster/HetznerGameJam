@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlsAiGround : Controls
+public class ControlsAiGround : ControlsAi
 {
     public Vector3 _targetPosition;
 

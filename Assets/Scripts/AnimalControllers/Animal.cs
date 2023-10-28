@@ -10,29 +10,36 @@ public abstract class Animal : MonoBehaviour
     [SerializeField]
     private ParticleSystem _prefabDeathParticles;
 
-    public float expCurrent;
-    public float expToUpgrade;
-    public float expDefault;
-    public AnimalType animalType;
+    public int Experience;
+    public AnimalSo AnimalSo;
 
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;
     protected SpriteRenderer _spriteRenderer;
     protected AnimalAttackTrigger _attackTrigger;
 
+    public UnityEvent OnDeath = new();
+    public UnityEvent OnExperience = new();
+
     protected Controls _controls;
 
-    public UnityEvent OnDeath;
+    // public UnityEvent OnDeath;
 
-    SpawnManager spawnManager;
+    private SpawnManager _spawnManager;
 
     protected float _size = 1;
 
     public bool IsGrounded;
 
+    private float _attackCooldown;
+
+
     void Start()
     {
-        spawnManager = SpawnManager.Instance;
+        if (_prefabDeathParticles == null)
+            _prefabDeathParticles = GlobalDataSo.Instance.PrefabDefaultDeathEffect;
+
+        _spawnManager = SpawnManager.Instance;
         var controlComponents = GetComponents<Controls>();
         _controls = controlComponents.FirstOrDefault(x => x.enabled);
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -44,8 +51,13 @@ public abstract class Animal : MonoBehaviour
 
     void Update()
     {
-        if (_controls.Attack)
+        if (_attackCooldown > 0)
+            _attackCooldown -= Time.deltaTime;
+        else if (_controls.Attack)
+        {
+            _attackCooldown = 1f;
             Attack();
+        }
 
         // Flip if Animal is heading the other way
         if (_rigidbody.velocity.x < -0.1f)
@@ -59,29 +71,37 @@ public abstract class Animal : MonoBehaviour
         var animal = _attackTrigger.TargetList.FirstOrDefault();
         if (animal != null)
         {
-            if (expCurrent > animal.expCurrent)
+            if (AnimalSo.Level > animal.AnimalSo.Level)
             {
-                expCurrent += animal.expCurrent;
+                AddExperience(animal.Experience * 25);
 
-                if (expCurrent >= expToUpgrade)
-                {
-                    //spawnManager.LevelUp(gameObject);
-                }
+                if (Experience >= AnimalSo.XpUntilLevelup)
+                    _spawnManager.LevelUp(this);
+
+                LeanTween.move(gameObject, animal.transform.position, 0.5f)
+                    .setEaseInOutBounce();
 
                 animal.Kill();
             }
             else
             {
-                // TODO: Make them attack me instead for animation?
+                LeanTween.move(animal.gameObject, transform.position, 0.5f)
+                    .setEaseInOutBounce();
                 Kill();
             }
         }
     }
 
+    private void AddExperience(int xp)
+    {
+        Experience += xp;
+        OnExperience.Invoke();
+    }
+
     public void Kill()
     {
         OnDeath.Invoke();
-        EffectsManager.Instance.SpawnEffect(_prefabDeathParticles.gameObject, transform.position);
+        EffectsManager.Instance.SpawnEffect(_prefabDeathParticles ?? GlobalDataSo.Instance.PrefabDefaultDeathEffect, transform.position);
         Destroy(gameObject);
     }
 
