@@ -11,5 +11,5 @@ public class AnimalSo : ScriptableObject
     public Animal Prefab;
 
     public float Level;
-    public float XpUntilLevelup;
+    public int XpUntilLevelup;
 }

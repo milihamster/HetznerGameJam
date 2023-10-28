@@ -762,6 +762,74 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &275188263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 275188266}
+  - component: {fileID: 275188265}
+  - component: {fileID: 275188264}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &275188264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275188263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &275188265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275188263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &275188266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275188263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &335956199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4629370536833254487, guid: ba1d34f3316e16c4b978dac8bd4f8e31, type: 3}
@@ -2556,6 +2624,19 @@ MonoBehaviour:
   EnemyMaxCount: 20
   PlanctonSpawnAmount: 10
   PlanctonSpawnRate: 20
+  SpawnablesSea:
+  - AnimalSo: {fileID: 11400000, guid: 11c0737eef3e8e64dbe801d33c1b098f, type: 2}
+    Amount: 10
+  - AnimalSo: {fileID: 11400000, guid: bb2c4d1a471faf549b4247afb9360184, type: 2}
+    Amount: 6
+  - AnimalSo: {fileID: 11400000, guid: d0be981d29f19804dacf33898c9121db, type: 2}
+    Amount: 4
+  SpawnablesLand:
+  - AnimalSo: {fileID: 11400000, guid: fce39d8880fc0eb47bf4f66700ef640c, type: 2}
+    Amount: 6
+  SpawnablesSky:
+  - AnimalSo: {fileID: 11400000, guid: 887d7c03ee338d54997bce12fb832451, type: 2}
+    Amount: 5
 --- !u!4 &1615667362
 Transform:
   m_ObjectHideFlags: 0
@@ -3035,6 +3116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fish
       objectReference: {fileID: 0}
+    - target: {fileID: 980408401495858665, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1873591383335660109, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3247,3 +3332,4 @@ SceneRoots:
   - {fileID: 1615667362}
   - {fileID: 3860413378799736677}
   - {fileID: 1222739330}
+  - {fileID: 275188266}

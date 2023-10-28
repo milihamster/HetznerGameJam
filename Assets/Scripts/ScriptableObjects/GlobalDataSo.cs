@@ -17,6 +17,6 @@ public class GlobalDataSo : ScriptableObject
     }
 
     public List<AnimalSo> Animals = new();
-
     public ParticleSystem PrefabDefaultDeathEffect;
+    public UiCanvasExperience PrefabCanvasExperience;
 }

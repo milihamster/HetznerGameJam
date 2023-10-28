@@ -6,6 +6,13 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
+[Serializable]
+public class SpawnableEntry
+{
+    public AnimalSo AnimalSo;
+    public int Amount;
+}
+
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance { get; private set; } 
@@ -18,6 +25,10 @@ public class SpawnManager : MonoBehaviour
     public int PlanctonSpawnAmount;
     public float PlanctonSpawnRate;
 
+    public List<SpawnableEntry> SpawnablesSea = new();
+    public List<SpawnableEntry> SpawnablesLand = new();
+    public List<SpawnableEntry> SpawnablesSky = new();
+
     public SpawnManager()
     {
         Instance = this;
@@ -26,8 +37,25 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         RespawnPlayer();
-        InitializeEnemies();
-        InvokeRepeating("SpawnPlanctons", 0, PlanctonSpawnRate);
+        //InvokeRepeating("SpawnPlanctons", 0, PlanctonSpawnRate);
+
+        SpawnInitial(SpawnablesSea, SpawnAreaSea);
+        SpawnInitial(SpawnablesLand, SpawnAreaLand, true);
+        SpawnInitial(SpawnablesSky, SpawnAreaSky);
+    }
+
+    public void SpawnInitial(List<SpawnableEntry> spawnables, Transform area, bool grounded = false)
+    {
+        foreach(var spawnable in spawnables)
+        {
+            var animalSo = spawnable.AnimalSo;
+            var amount = spawnable.Amount;
+
+            for (int i = 0; i < amount; i++)
+            {
+                SpawnAnimal(animalSo.Prefab, area, grounded);
+            }
+        }
     }
 
     public void RespawnPlayer()
@@ -35,8 +63,6 @@ public class SpawnManager : MonoBehaviour
         var animal = SpawnAnimal(GlobalDataSo.Instance.Animals.First(x => x.Level == 1).Prefab, SpawnAreaSea, false);
         animal.GetComponent<ControlsAiFish>().enabled = false;
         animal.GetComponent<ControlsPlayer>().enabled = true;
-
-        animal.name = "PICKME!!!!";
 
         CameraController.Instance.Target = animal.transform;
     }
@@ -69,36 +95,57 @@ public class SpawnManager : MonoBehaviour
     {
         Vector3 spawnPosition = animal.transform.position;
 
-        var newForm = GlobalDataSo.Instance.Animals.FirstOrDefault(x => x.Level > animal.AnimalSo.Level).Prefab;
+        bool isPlayer = animal.GetComponent<ControlsPlayer>().enabled;
+
+        var newForm = GlobalDataSo.Instance.Animals
+            .FirstOrDefault(x => x.Level > animal.AnimalSo.Level).Prefab;
 
         //TODO: LevelUpAnimation
 
-        Instantiate(newForm, spawnPosition, animal.transform.rotation);
+        var newAnimal = Instantiate(newForm, spawnPosition, animal.transform.rotation);
+
+        if(isPlayer)
+        {
+            newAnimal.GetComponent<ControlsAi>().enabled = false;
+            newAnimal.GetComponent<ControlsPlayer>().enabled = true;
+
+            CameraController.Instance.Target = newAnimal.transform;
+        }
+
         Destroy(animal.gameObject);
     }
 
-    void InitializeEnemies()
-    {
-        for (int i = 0; i < EnemyMaxCount; i++)
-        {
-            SpawnAnimal(GlobalDataSo.Instance.Animals.First(x => x.Level == 1).Prefab, SpawnAreaSea, false);
-        }
-    }
+    //void InitializeEnemies()
+    //{
+    //    for (int i = 0; i < EnemyMaxCount; i++)
+    //    {
+    //        SpawnAnimal(GlobalDataSo.Instance.Animals.First(x => x.Level == 1).Prefab, SpawnAreaSea, false);
+    //    }
+    //}
 
-    void SpawnPlanctons()
-    {
-        for (int i = 0; i < PlanctonSpawnAmount; i++)
-        {
-            SpawnAnimal(GlobalDataSo.Instance.Animals.First(x => x.Level == 0).Prefab, SpawnAreaSea, true);
-        }
-    }
+    //void SpawnPlanctons()
+    //{
+    //    for (int i = 0; i < PlanctonSpawnAmount; i++)
+    //    {
+    //        SpawnAnimal(GlobalDataSo.Instance.Animals.First(x => x.Level == 0).Prefab, SpawnAreaSea, true);
+    //    }
+    //}
+
+    public static float LowestX;
 
     Animal SpawnAnimal(Animal animal, Transform area, bool grounded)
     {
         // Bereich
         float randomX = UnityEngine.Random.Range(-area.localScale.x, area.localScale.x)/2;
         float randomY = UnityEngine.Random.Range(-area.localScale.y, area.localScale.y)/2;
-        Vector3 spawnPoint = new Vector3(randomX, randomY);
+        Vector3 spawnPoint = area.position + new Vector3(randomX, randomY);
+
+        if(randomX < LowestX)
+        {
+            LowestX = randomX;
+            print("LOWEST X: " + LowestX);
+        }
+
         if(grounded)
         {
             RaycastHit hit;

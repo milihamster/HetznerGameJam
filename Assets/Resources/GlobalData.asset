@@ -18,3 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0be981d29f19804dacf33898c9121db, type: 2}
   - {fileID: 11400000, guid: fce39d8880fc0eb47bf4f66700ef640c, type: 2}
   - {fileID: 11400000, guid: 887d7c03ee338d54997bce12fb832451, type: 2}
+  PrefabDefaultDeathEffect: {fileID: 2353600328317590899, guid: ceec7516237b4104b94300043ca39784, type: 3}
+  PrefabCanvasExperience: {fileID: 3282356498105199814, guid: 6db7e7a5a96b53b4ea2a917975cd63ac, type: 3}

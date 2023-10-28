@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AnimalFish))]
-public class ControlsAiFish : Controls
+public class ControlsAiFish : ControlsAi
 {
     public Vector3 _targetPosition;
 

@@ -10,7 +10,7 @@ public abstract class Animal : MonoBehaviour
     [SerializeField]
     private ParticleSystem _prefabDeathParticles;
 
-    public float Experience;
+    public int Experience;
     public AnimalSo AnimalSo;
 
     protected Rigidbody2D _rigidbody;
@@ -18,11 +18,12 @@ public abstract class Animal : MonoBehaviour
     protected SpriteRenderer _spriteRenderer;
     protected AnimalAttackTrigger _attackTrigger;
 
-    public UnityEvent OnDeath;
+    public UnityEvent OnDeath = new();
+    public UnityEvent OnExperience = new();
 
     protected Controls _controls;
 
-    //public UnityEvent OnDeath;
+    // public UnityEvent OnDeath;
 
     private SpawnManager _spawnManager;
 
@@ -32,8 +33,12 @@ public abstract class Animal : MonoBehaviour
 
     private float _attackCooldown;
 
+
     void Start()
     {
+        if (_prefabDeathParticles == null)
+            _prefabDeathParticles = GlobalDataSo.Instance.PrefabDefaultDeathEffect;
+
         _spawnManager = SpawnManager.Instance;
         var controlComponents = GetComponents<Controls>();
         _controls = controlComponents.FirstOrDefault(x => x.enabled);
@@ -66,9 +71,9 @@ public abstract class Animal : MonoBehaviour
         var animal = _attackTrigger.TargetList.FirstOrDefault();
         if (animal != null)
         {
-            if (Experience > animal.Experience)
+            if (AnimalSo.Level > animal.AnimalSo.Level)
             {
-                Experience += animal.Experience;
+                AddExperience(animal.Experience * 25);
 
                 if (Experience >= AnimalSo.XpUntilLevelup)
                     _spawnManager.LevelUp(this);
@@ -85,6 +90,12 @@ public abstract class Animal : MonoBehaviour
                 Kill();
             }
         }
+    }
+
+    private void AddExperience(int xp)
+    {
+        Experience += xp;
+        OnExperience.Invoke();
     }
 
     public void Kill()

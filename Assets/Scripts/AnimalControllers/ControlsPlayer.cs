@@ -11,6 +11,10 @@ public class ControlsPlayer : Controls
     {
         var animal = GetComponent<Animal>();
         animal.OnDeath.AddListener(() => SpawnManager.Instance.RespawnPlayer());
+
+        var canvasExperience = Instantiate(GlobalDataSo.Instance.PrefabCanvasExperience.gameObject, transform);
+        animal.OnExperience.AddListener(() => canvasExperience.GetComponent<UiCanvasExperience>()
+            .SetValue(animal.Experience, animal.AnimalSo.XpUntilLevelup));
     }
 
     protected override void HandleControls()
@@ -25,5 +29,4 @@ public class ControlsPlayer : Controls
     {
       
     }
-
 }
