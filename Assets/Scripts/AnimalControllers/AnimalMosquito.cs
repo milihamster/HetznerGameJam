@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalPlankton : Animal
+public class AnimalMosquito : Animal
 {
     [SerializeField]
-    private float _maxSpeed = 0.1f;
+    private float _maxSpeed = 0.5f;
 
     void LateUpdate()
     {
@@ -17,13 +17,9 @@ public class AnimalPlankton : Animal
     void FixedUpdate()
     {
         _rigidbody.AddForce(-Physics.gravity, ForceMode2D.Force);  // Counter Gravity
-        _rigidbody.AddForce(new(_controls.MovementHorizontal * 2, _controls.MovementVertical * 2));
+        _rigidbody.AddForce(new(_controls.MovementHorizontal * 5, _controls.MovementVertical * 5)); // Movement
 
-        // If above water
-        if (transform.position.y > 0)
-            _rigidbody.AddForce(new(0, -50));
-
-        if (transform.position.y + 2 * (_collider as CircleCollider2D).radius > 0)
-            _rigidbody.AddForce(new(0, -1));
+        if (transform.position.y < 2 * (_collider as CircleCollider2D).radius)
+            _rigidbody.AddForce(new(0, 5)); // No-Like Water
     }
 }
