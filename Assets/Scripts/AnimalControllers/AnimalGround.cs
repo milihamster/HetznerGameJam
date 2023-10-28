@@ -6,6 +6,8 @@ public class AnimalGround : Animal
 {
     [SerializeField]
     private float _maxSpeed = 3.5f;
+    [SerializeField]
+    private bool _wontDrown = false;
 
     void LateUpdate()
     {
@@ -13,13 +15,12 @@ public class AnimalGround : Animal
         if (_rigidbody.velocity.magnitude > _maxSpeed)
             _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
 
-
         // Jump if animal is on ground
         if (_controls.Special && IsGrounded)
             _rigidbody.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
 
         // Kill if drowning
-        if (transform.position.y < -1)
+        if (transform.position.y < -1 && !_wontDrown)
             Kill();
     }
 

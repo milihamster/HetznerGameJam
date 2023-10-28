@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e287ff9755516a4bbbfa8573f79c12e, type: 3}
-  m_Name: 3-Lion
+  m_Name: 3-Beaver
   m_EditorClassIdentifier: 
-  Title: Lion
+  Title: Beaver
   Description: 
   Type: 1
-  Prefab: {fileID: 6968402688931416544, guid: 0b4191d565e842948a4117c1a5ce3019, type: 3}
+  Prefab: {fileID: 5002019640011803780, guid: 34ebb5c746c86e14bb07e2680434700c, type: 3}
   Level: 3
   XpUntilLevelup: 400

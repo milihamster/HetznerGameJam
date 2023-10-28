@@ -484,9 +484,9 @@ GameObject:
   - component: {fileID: 129227576}
   - component: {fileID: 129227575}
   - component: {fileID: 129227577}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LevelBackground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2626,17 +2626,19 @@ MonoBehaviour:
   PlanctonSpawnRate: 20
   SpawnablesSea:
   - AnimalSo: {fileID: 11400000, guid: 11c0737eef3e8e64dbe801d33c1b098f, type: 2}
-    Amount: 10
+    Amount: 333
   - AnimalSo: {fileID: 11400000, guid: bb2c4d1a471faf549b4247afb9360184, type: 2}
-    Amount: 6
+    Amount: 444
   - AnimalSo: {fileID: 11400000, guid: d0be981d29f19804dacf33898c9121db, type: 2}
-    Amount: 4
+    Amount: 555
   SpawnablesLand:
-  - AnimalSo: {fileID: 11400000, guid: fce39d8880fc0eb47bf4f66700ef640c, type: 2}
-    Amount: 6
+  - AnimalSo: {fileID: 11400000, guid: 791964ef2cf9b7543a5dfd59c01ad3bd, type: 2}
+    Amount: 666
   SpawnablesSky:
   - AnimalSo: {fileID: 11400000, guid: 887d7c03ee338d54997bce12fb832451, type: 2}
-    Amount: 5
+    Amount: 343
+  - AnimalSo: {fileID: 11400000, guid: 1bd20b04ab9a4f246a67658567223d65, type: 2}
+    Amount: 434
 --- !u!4 &1615667362
 Transform:
   m_ObjectHideFlags: 0

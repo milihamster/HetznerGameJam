@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e287ff9755516a4bbbfa8573f79c12e, type: 3}
-  m_Name: 4-Pelican
+  m_Name: 4-Lion
   m_EditorClassIdentifier: 
-  Title: Pelican
+  Title: Lion
   Description: 
-  Type: 2
-  Prefab: {fileID: 3761843401367279770, guid: ba1d34f3316e16c4b978dac8bd4f8e31, type: 3}
+  Type: 1
+  Prefab: {fileID: 6968402688931416544, guid: 0b4191d565e842948a4117c1a5ce3019, type: 3}
   Level: 4
-  XpUntilLevelup: 60000
+  XpUntilLevelup: 600
