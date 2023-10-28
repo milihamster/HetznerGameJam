@@ -7,4 +7,10 @@ using UnityEngine;
 /// </summary>
 public abstract class ControlsAi : Controls
 {
+    void Start()
+    {
+        var animal = GetComponent<Animal>();
+        animal.OnDeath.AddListener(() =>
+            SpawnManager.Instance.RespawnAnimal(animal));
+    }
 }

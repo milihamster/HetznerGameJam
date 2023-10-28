@@ -2626,19 +2626,21 @@ MonoBehaviour:
   PlanctonSpawnRate: 20
   SpawnablesSea:
   - AnimalSo: {fileID: 11400000, guid: 11c0737eef3e8e64dbe801d33c1b098f, type: 2}
-    Amount: 333
+    Amount: 10
   - AnimalSo: {fileID: 11400000, guid: bb2c4d1a471faf549b4247afb9360184, type: 2}
-    Amount: 444
+    Amount: 10
   - AnimalSo: {fileID: 11400000, guid: d0be981d29f19804dacf33898c9121db, type: 2}
-    Amount: 555
+    Amount: 6
   SpawnablesLand:
   - AnimalSo: {fileID: 11400000, guid: 791964ef2cf9b7543a5dfd59c01ad3bd, type: 2}
-    Amount: 666
+    Amount: 7
+  - AnimalSo: {fileID: 11400000, guid: fce39d8880fc0eb47bf4f66700ef640c, type: 2}
+    Amount: 4
   SpawnablesSky:
   - AnimalSo: {fileID: 11400000, guid: 887d7c03ee338d54997bce12fb832451, type: 2}
-    Amount: 343
+    Amount: 7
   - AnimalSo: {fileID: 11400000, guid: 1bd20b04ab9a4f246a67658567223d65, type: 2}
-    Amount: 434
+    Amount: 4
 --- !u!4 &1615667362
 Transform:
   m_ObjectHideFlags: 0
@@ -3050,91 +3052,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 466cba13273604a4c90c4544bb7035bb, type: 3}
---- !u!1001 &3860413378799736677
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 790304615633111881, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.924999
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.108999
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 848066224780274846, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 980408401495858665, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_Name
-      value: Fish
-      objectReference: {fileID: 0}
-    - target: {fileID: 980408401495858665, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873591383335660109, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7695671223604079087, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
-      propertyPath: expToUpgrade
-      value: 100
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c33080c90c1b6ac4db0afd8119ee8dd2, type: 3}
 --- !u!1001 &4155453650473453406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3332,6 +3249,5 @@ SceneRoots:
   - {fileID: 129227576}
   - {fileID: 116474631}
   - {fileID: 1615667362}
-  - {fileID: 3860413378799736677}
   - {fileID: 1222739330}
   - {fileID: 275188266}

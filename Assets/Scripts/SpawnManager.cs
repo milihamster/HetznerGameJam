@@ -67,7 +67,7 @@ public class SpawnManager : MonoBehaviour
         CameraController.Instance.Target = animal.transform;
     }
 
-    public void ReSpawnEnemy(Animal animal)
+    public void RespawnAnimal(Animal animal)
     {
         Transform chosenArea;
         bool grounded = false;

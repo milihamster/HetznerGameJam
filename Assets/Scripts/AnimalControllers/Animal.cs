@@ -23,8 +23,6 @@ public abstract class Animal : MonoBehaviour
 
     protected Controls _controls;
 
-    // public UnityEvent OnDeath;
-
     private SpawnManager _spawnManager;
 
     protected float _size = 1;
