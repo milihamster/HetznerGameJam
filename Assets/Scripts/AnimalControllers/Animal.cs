@@ -34,6 +34,7 @@ public abstract class Animal : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
+        _collider = GetComponent<Collider2D>();
     }
 
     void Update()
