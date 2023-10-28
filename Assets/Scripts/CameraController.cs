@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO: Fix weird bliue flash
+// TODO: Fix weird blue flash
 public class CameraController : MonoBehaviour
 {
     public static CameraController Instance;
@@ -19,13 +19,17 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         _camera = GetComponentInChildren<Camera>();
+
+        // Automatically choose Player as Target if there isn't any
+        if (Target == null)
+            Target = Transform.FindObjectOfType<ControlsPlayer>()?.transform;
     }
 
     void Update()
     {
         // If Target is far away:
         // Move camera there smoothly
-        if(!LeanTween.isTweening(gameObject))
+        if(!LeanTween.isTweening(gameObject) && Target != null)
         {
             if (Vector2.Distance(
                 new(transform.position.x, transform.position.y),
