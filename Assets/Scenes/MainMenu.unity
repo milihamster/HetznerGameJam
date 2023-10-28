@@ -2445,7 +2445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 1114390424}
-  collitionSound: {fileID: 1931558192}
+  effecSource: {fileID: 0}
 --- !u!4 &1396734444
 Transform:
   m_ObjectHideFlags: 0
@@ -3389,7 +3389,7 @@ GameObject:
   - component: {fileID: 1931558191}
   - component: {fileID: 1931558192}
   m_Layer: 0
-  m_Name: CollitionSource
+  m_Name: EffectSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
