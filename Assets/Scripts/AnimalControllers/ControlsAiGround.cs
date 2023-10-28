@@ -23,20 +23,24 @@ public class ControlsAiGround : Controls
     {
         if (_positionCooldown <= 0)
         {
-            _targetPosition = transform.position + new Vector3(
-            Random.Range(-_range, _range),
-            transform.position.y, 0);
+            float x = (Random.Range(0, 2) * 2 - 1) * Random.Range(0.1f * _range, _range);
+            _targetPosition = transform.position + Vector3.right * x;
 
-            _positionCooldown = Random.Range(0, _startCooldown);
+            _positionCooldown = Random.Range(0.1f * _startCooldown, _startCooldown);
         }
         else
             _positionCooldown -= Time.deltaTime;
 
         MovementHorizontal = _targetPosition.x - transform.position.x;
 
-        if (MovementHorizontal > _speed)
-            MovementHorizontal = _speed;
-        else if (MovementHorizontal < -_speed)
-            MovementHorizontal = -_speed;
+        if (Mathf.Abs(MovementHorizontal) < 0.1f)
+        {
+            MovementHorizontal = 0;
+        }
+
+        if (Mathf.Abs(MovementHorizontal) > _speed)
+        {
+            MovementHorizontal = Mathf.Sign(MovementHorizontal) * _speed;
+        }
     }
 }
