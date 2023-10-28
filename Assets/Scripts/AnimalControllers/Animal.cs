@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public abstract class Animal : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
+    protected Collider2D _collider;
     protected SpriteRenderer _spriteRenderer;
 
     protected Controls _controls;
@@ -15,7 +16,8 @@ public abstract class Animal : MonoBehaviour
 
     protected float _size = 1;
 
-    // Start is called before the first frame update
+    public bool IsGrounded;
+
     void Start()
     {
         _controls = GetComponent<Controls>();
@@ -23,13 +25,25 @@ public abstract class Animal : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    void Update()
     {
         // Flip if Animal is heading the other way
         if (_rigidbody.velocity.x < 0)
             transform.localScale = Vector3.one * _size;
         else if (_rigidbody.velocity.x > 0)
             transform.localScale = new Vector3(-_size, _size, _size);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Ground")
+            IsGrounded = true;
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Ground")
+            IsGrounded = false;
     }
 
 }
