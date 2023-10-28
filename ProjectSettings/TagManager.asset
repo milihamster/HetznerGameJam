@@ -42,3 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3852886321
+    locked: 0
+  - name: EnvironmentBack
+    uniqueID: 3181188937
+    locked: 0
+  - name: EnvironmentFront
+    uniqueID: 3200610793
+    locked: 0
+  - name: Animals
+    uniqueID: 3443662267
+    locked: 0
+  - name: ForeGround
+    uniqueID: 3348422953
+    locked: 0
