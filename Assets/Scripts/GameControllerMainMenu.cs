@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,8 +20,8 @@ public class GameControllerMainMenu : MonoBehaviour
 
 
         SettingsMenu.SetActive(false);
-        Animation(GameName, 1);
-        Animation(MainMenu, 2);
+        Animation(GameName, 0.5f);
+        Animation(MainMenu, 1f);
 
 
 
@@ -31,9 +32,9 @@ public class GameControllerMainMenu : MonoBehaviour
     {
         targetObject.transform.localScale = startScale;
         targetObject.SetActive(true);
-        
-        LeanTween.scale(targetObject, endScale, popDuration)
-            .setEase(LeanTweenType.easeInOutElastic).setDelay(delay); 
+
+        LeanTween.scale(targetObject, endScale, 0.3f).setDelay(delay);
+
 
 
 
@@ -41,7 +42,7 @@ public class GameControllerMainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-
+        LeanTween.scale(gameObject, endScale, 0.5f);
         SceneManager.LoadScene("MaxTestingScene");
 
     }
@@ -59,6 +60,11 @@ public class GameControllerMainMenu : MonoBehaviour
         GameName.SetActive(true);
         MainMenu.SetActive(false);
         SettingsMenu.SetActive(true);
+        SettingsMenu.transform.localScale = startScale;
+        LeanTween.scale(MainMenu, startScale, 0.2f).setDelay(0.1f);
+        LeanTween.scale(SettingsMenu, endScale, 0.2f).setDelay(0.1f);
+
+
 
     }
     public void CloseSettings()
@@ -66,6 +72,10 @@ public class GameControllerMainMenu : MonoBehaviour
         GameName.SetActive(true);
         MainMenu.SetActive(true);
         SettingsMenu.SetActive(false);
+        SettingsMenu.transform.localScale = startScale;
+        LeanTween.scale(SettingsMenu, startScale, 0.2f).setDelay(0.1f);
+        LeanTween.scale(MainMenu, endScale, 0.2f).setDelay(0.1f);
+
     }
 
 
