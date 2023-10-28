@@ -14,11 +14,6 @@ public class GameControllerScript : MonoBehaviour
 
     public bool GameIsRunning = true;
 
-    private void Start()
-    {
-
-        SoundController.Instance.Load();
-    }
 
     void Update()
     {
