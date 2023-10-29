@@ -79,7 +79,7 @@ public abstract class Animal : MonoBehaviour
         {
             if (AnimalSo.Level > animal.AnimalSo.Level)
             {
-                AddExperience(animal.Experience * 25);
+                AddExperience(animal.Experience);
 
                 if (Experience >= AnimalSo.XpUntilLevelup)
                 {

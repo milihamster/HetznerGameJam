@@ -5,8 +5,15 @@ using UnityEngine.UI;
 
 public class UiCanvasExperience : MonoBehaviour
 {
+    public static UiCanvasExperience Instance;
+
     [SerializeField]
     private Slider _slider;
+
+    public UiCanvasExperience()
+    {
+        Instance = this;
+    }
 
     void Start()
     {

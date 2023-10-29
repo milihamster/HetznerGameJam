@@ -15,9 +15,11 @@ public class ControlsPlayer : Controls
             Timer.Reset();
         });
 
+        UiCanvasExperience.Instance.SetValue(animal.Experience, 0);
+
         //var canvasExperience = Instantiate(GlobalDataSo.Instance.PrefabCanvasExperience.gameObject, transform);
-        //animal.OnExperience.AddListener(() => canvasExperience.GetComponent<UiCanvasExperience>()
-        //    .SetValue(animal.Experience, animal.AnimalSo.XpUntilLevelup));
+        animal.OnExperience.AddListener(() => UiCanvasExperience.Instance
+            .SetValue(animal.Experience, animal.AnimalSo.XpUntilLevelup));
     }
 
     protected override void HandleControls()
