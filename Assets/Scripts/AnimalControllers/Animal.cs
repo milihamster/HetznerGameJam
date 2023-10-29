@@ -34,6 +34,8 @@ public abstract class Animal : MonoBehaviour
 
     void Start()
     {
+        _size = transform.localScale.x;
+
         if (_prefabDeathParticles == null)
             _prefabDeathParticles = GlobalDataSo.Instance.PrefabDefaultDeathEffect;
 

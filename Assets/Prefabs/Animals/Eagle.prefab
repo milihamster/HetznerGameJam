@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1212422968691354673}
   - component: {fileID: 5288103646350177630}
   - component: {fileID: 4277529432135502820}
-  - component: {fileID: 4572388284159458526}
-  m_Layer: 0
+  - component: {fileID: 5523251738284685472}
+  m_Layer: 7
   m_Name: Eagle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 57.45666, y: 1.473691, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3137042757079730151}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -851305029
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c4f5c8354d679474eac5395c2e5a6bbe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -173,8 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementHorizontal: 0
   MovementVertical: 0
---- !u!61 &4572388284159458526
-BoxCollider2D:
+--- !u!70 &5523251738284685472
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -205,19 +205,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005147934, y: -0.003431797}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.942, y: 1.555}
-    newSize: {x: 0.953, y: 0.9695}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.89808846, y: 0.91802216}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.000000020043869, y: -0.16814017}
+  m_Size: {x: 1.9420007, y: 1.1185588}
+  m_Direction: 1
 --- !u!1 &7010014507132407019
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,9 +218,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3137042757079730151}
   - component: {fileID: 7603806320932863296}
-  - component: {fileID: 1109596511022278161}
   - component: {fileID: 219562217741045552}
-  m_Layer: 0
+  - component: {fileID: 7271212264811844211}
+  m_Layer: 7
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +236,7 @@ Transform:
   m_GameObject: {fileID: 7010014507132407019}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.75, y: -0.25, z: 0}
+  m_LocalPosition: {x: -1.222, y: -0.239, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,8 +294,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1109596511022278161
-CircleCollider2D:
+--- !u!114 &219562217741045552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7010014507132407019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e4f6a11ce1d14418aba1d1a279d15b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetList: []
+--- !u!70 &7271212264811844211
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -336,19 +339,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &219562217741045552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7010014507132407019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e4f6a11ce1d14418aba1d1a279d15b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetList: []
+  m_Offset: {x: -0.03577423, y: 0.1931808}
+  m_Size: {x: 1.4579163, y: 2.3880396}
+  m_Direction: 0
