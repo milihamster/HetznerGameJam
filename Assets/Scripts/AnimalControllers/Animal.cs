@@ -17,7 +17,7 @@ public abstract class Animal : MonoBehaviour
     protected Collider2D _collider;
     protected SpriteRenderer _spriteRenderer;
     protected AnimalAttackTrigger _attackTrigger;
-    protected Animator _animator;
+    public Animator Animator;
 
     public UnityEvent OnDeath = new();
     public UnityEvent OnExperience = new();
@@ -46,7 +46,7 @@ public abstract class Animal : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _attackTrigger = GetComponentInChildren<AnimalAttackTrigger>();
-        TryGetComponent<Animator>(out _animator);
+        TryGetComponent<Animator>(out Animator);
         _collider = GetComponent<Collider2D>();
     }
 

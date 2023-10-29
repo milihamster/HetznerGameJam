@@ -16,7 +16,7 @@ public class AnimalGround : Animal
             _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
 
         // Standing Animation if animal is standing around
-        _animator?.SetBool("Standing",
+        Animator?.SetBool("Standing",
             Vector2.Distance(_rigidbody.velocity, Vector2.zero) < 0.2f);
 
         // Jump if animal is on ground

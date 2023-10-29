@@ -22,6 +22,8 @@ public class NestTrigger : MonoBehaviour
 
                 SpawnManager.Instance.RespawnPlayer(_playerAnimal.transform.position += new Vector3(-0.6f, -0.3125f, 0));
                 _cutsceneActive = false;
+
+                _playerAnimal.Animator?.SetBool("Final", true);
             }
         }
     }

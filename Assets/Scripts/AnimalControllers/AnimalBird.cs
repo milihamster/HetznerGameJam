@@ -15,7 +15,7 @@ public class AnimalBird : Animal
         if (_rigidbody.velocity.magnitude > _maxSpeed)
             _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
 
-        _animator?.SetBool("Standing", IsGrounded);
+        Animator?.SetBool("Standing", IsGrounded);
 
         // Kill if drowning
         if (transform.position.y < -1 && !_wontDrown)
