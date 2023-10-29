@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    void Awake()
     {
         _camera = GetComponentInChildren<Camera>();
 
@@ -25,13 +25,19 @@ public class CameraController : MonoBehaviour
         if (Target == null)
         {
             var targets = Transform.FindObjectsOfType<ControlsPlayer>();
-            Target = targets.FirstOrDefault(x => x.isActiveAndEnabled).transform; 
+            Target = targets.FirstOrDefault(x => x.isActiveAndEnabled)?.transform; 
         }
     }
 
     public void SetCameraSize(float newSize)
     {
-        _camera.orthographicSize = newSize;
+        LeanTween.cancel(_camera.gameObject);
+        LeanTween.value(_camera.gameObject, _camera.orthographicSize, newSize, 0.5f)
+            .setOnUpdate((float val) =>
+            {
+                _camera.orthographicSize = val;
+            })
+            .setEaseInOutSine();
     }
 
     void Update()

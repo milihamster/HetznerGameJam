@@ -16,7 +16,7 @@ public class SpawnableEntry
 
 public class SpawnManager : MonoBehaviour
 {
-    public static SpawnManager Instance { get; private set; } 
+    public static SpawnManager Instance { get; private set; }
 
     public Transform SpawnAreaSea;
     public Transform SpawnAreaLand;
@@ -49,7 +49,7 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnInitial(List<SpawnableEntry> spawnables, Transform area, bool grounded = false)
     {
-        foreach(var spawnable in spawnables)
+        foreach (var spawnable in spawnables)
         {
             var animalSo = spawnable.AnimalSo;
             var amount = spawnable.Amount;
@@ -68,6 +68,7 @@ public class SpawnManager : MonoBehaviour
         animal.GetComponent<ControlsPlayer>().enabled = true;
 
         CameraController.Instance.Target = animal.transform;
+        CameraController.Instance.SetCameraSize(animal.AnimalSo.cameraSize);
     }
 
     public void RespawnAnimal(Animal animal)
@@ -94,7 +95,7 @@ public class SpawnManager : MonoBehaviour
         SpawnAnimal(animal, chosenArea, grounded);
     }
 
-    public void LevelUp(Animal animal) 
+    public void LevelUp(Animal animal)
     {
         Vector3 spawnPosition = animal.transform.position;
 
@@ -107,12 +108,13 @@ public class SpawnManager : MonoBehaviour
 
         var newAnimal = Instantiate(newForm, spawnPosition, animal.transform.rotation);
 
-        if(isPlayer)
+        if (isPlayer)
         {
             newAnimal.GetComponent<ControlsAi>().enabled = false;
             newAnimal.GetComponent<ControlsPlayer>().enabled = true;
 
             CameraController.Instance.Target = newAnimal.transform;
+            CameraController.Instance.SetCameraSize(newAnimal.AnimalSo.cameraSize);
         }
 
         Destroy(animal.gameObject);
@@ -139,21 +141,21 @@ public class SpawnManager : MonoBehaviour
     Animal SpawnAnimal(Animal animal, Transform area, bool grounded)
     {
         // Bereich
-        float randomX = UnityEngine.Random.Range(-area.localScale.x, area.localScale.x)/2;
-        float randomY = UnityEngine.Random.Range(-area.localScale.y, area.localScale.y)/2;
+        float randomX = UnityEngine.Random.Range(-area.localScale.x, area.localScale.x) / 2;
+        float randomY = UnityEngine.Random.Range(-area.localScale.y, area.localScale.y) / 2;
         Vector3 spawnPoint = area.position + new Vector3(randomX, randomY);
 
         PolygonCollider2D worldCollider = level.GetComponent<PolygonCollider2D>();
 
-        if(worldCollider.bounds.Contains(spawnPoint))
+        if (worldCollider.bounds.Contains(spawnPoint))
         {
             return SpawnAnimal(animal, area, grounded);
         }
 
-        if(grounded)
+        if (grounded)
         {
             RaycastHit hit;
-            if(Physics.Raycast(spawnPoint, -Vector3.up, out hit))
+            if (Physics.Raycast(spawnPoint, -Vector3.up, out hit))
             {
                 spawnPoint.y = hit.point.y;
             }
