@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ControlsAiBird : ControlsAi
 {
-    public Vector3 ForceTargetPosition;
+    public Vector3? ForceTargetPosition;
     public Vector3 TargetPosition;
 
     [SerializeField]
@@ -74,7 +74,7 @@ public class ControlsAiBird : ControlsAi
             TargetPosition = _attackingAnimal.transform.position;
 
         if (ForceTargetPosition != null)
-            TargetPosition = ForceTargetPosition;
+            TargetPosition = ForceTargetPosition.Value;
 
         MovementVertical = TargetPosition.y - transform.position.y;
         MovementHorizontal = TargetPosition.x - transform.position.x;
