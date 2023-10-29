@@ -2343,6 +2343,7 @@ MonoBehaviour:
   effectSlider: {fileID: 1765609691}
   musicSlider: {fileID: 1786170877}
   mixer: {fileID: 24100000, guid: e45315e8728a41e478e58a75429c5934, type: 2}
+  ai: {fileID: 1990121294}
 --- !u!1 &1246307099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2871,6 +2872,7 @@ MonoBehaviour:
   effectSlider: {fileID: 1765609691}
   musicSlider: {fileID: 1786170877}
   mixer: {fileID: 24100000, guid: e45315e8728a41e478e58a75429c5934, type: 2}
+  ai: {fileID: 0}
 --- !u!1 &1542245410
 GameObject:
   m_ObjectHideFlags: 0
@@ -4952,7 +4954,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1173411861}
+        m_TargetAssemblyTypeName: VolumeController, Assembly-CSharp
+        m_MethodName: ToggleAI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &2054023542
 GameObject:
