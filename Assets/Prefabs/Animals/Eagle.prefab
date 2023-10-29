@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5288103646350177630}
   - component: {fileID: 4277529432135502820}
   - component: {fileID: 5523251738284685472}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eagle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 7603806320932863296}
   - component: {fileID: 219562217741045552}
   - component: {fileID: 7271212264811844211}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

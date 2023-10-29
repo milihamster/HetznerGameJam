@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 790304615633111881}
   - component: {fileID: 1873591383335660109}
   - component: {fileID: 5728891413965419647}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 5464263899676409325}
   - component: {fileID: 5748412988685882165}
   - component: {fileID: 5214338003354606778}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

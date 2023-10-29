@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 506348450562508338}
   - component: {fileID: 5373517533904487990}
   - component: {fileID: 3083482960083697815}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 5320426976079967411}
   - component: {fileID: 6297805761550331944}
   - component: {fileID: 8283118011485906713}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mosquito
   m_TagString: Untagged
   m_Icon: {fileID: 0}

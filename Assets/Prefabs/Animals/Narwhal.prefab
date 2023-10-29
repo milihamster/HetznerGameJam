@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1281517003220106861}
   - component: {fileID: 5186098809423990933}
   - component: {fileID: 1023329751890997889}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 2947886242108085082}
   - component: {fileID: 3441352894259444099}
   - component: {fileID: 2365657264113837140}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Narwhal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1042208771418485388}
   - component: {fileID: 5103444719552798}
   - component: {fileID: 5104884318953904176}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pelican
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 7475258748778426610}
   - component: {fileID: 1205761129642794398}
   - component: {fileID: 530227636528928455}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

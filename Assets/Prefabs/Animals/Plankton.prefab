@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4029963861564877175}
   - component: {fileID: 8466848773530151891}
   - component: {fileID: 8426678301773212540}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 5281994702563402473}
   - component: {fileID: 4764166256535411468}
   - component: {fileID: 2233576244164562167}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plankton
   m_TagString: Untagged
   m_Icon: {fileID: 0}

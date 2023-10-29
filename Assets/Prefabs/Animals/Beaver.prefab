@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 948218477999398853}
   - component: {fileID: 5582859611116634337}
   - component: {fileID: 8414317931154677364}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 990683482098429269}
   - component: {fileID: 6618657844041895854}
   - component: {fileID: 170459677236782455}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Beaver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

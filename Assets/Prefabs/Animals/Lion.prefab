@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 884035803156986974}
   - component: {fileID: 7549302537052903202}
   - component: {fileID: 705954339309242950}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4708408748051336364}
   - component: {fileID: 2443901281909660624}
   - component: {fileID: 8025923844095050113}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
