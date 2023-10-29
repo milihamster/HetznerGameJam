@@ -117,7 +117,6 @@ public abstract class Animal : MonoBehaviour
     {
         OnDeath.Invoke();
         EffectsManager.Instance.SpawnEffect(_prefabDeathParticles ?? GlobalDataSo.Instance.PrefabDefaultDeathEffect, transform.position);
-        SoundController.Instance.PlaySoundEffect(deathSound);
         Destroy(gameObject);
     }
 

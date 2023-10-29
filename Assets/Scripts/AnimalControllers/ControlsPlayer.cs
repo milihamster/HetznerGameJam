@@ -20,6 +20,8 @@ public class ControlsPlayer : Controls
         //var canvasExperience = Instantiate(GlobalDataSo.Instance.PrefabCanvasExperience.gameObject, transform);
         animal.OnExperience.AddListener(() => UiCanvasExperience.Instance
             .SetValue(animal.Experience, animal.AnimalSo.XpUntilLevelup));
+
+        animal.OnDeath.AddListener(() => SoundController.Instance.PlaySoundEffect(animal.deathSound));
     }
 
     protected override void HandleControls()
