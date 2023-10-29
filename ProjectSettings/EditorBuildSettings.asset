@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/ForeignAssets/DynamicWater/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MaxTestingScene.unity
     guid: 394cdd9d7f40e234b8cecf9195e4ac42
+  - enabled: 1
+    path: Assets/Scenes/MaxDONTTOUCHTHIS.unity
+    guid: b569f331c62fa9b4887ac53a489d79f1
   m_configObjects: {}

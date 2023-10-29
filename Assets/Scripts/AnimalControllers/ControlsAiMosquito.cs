@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AnimalMosquito))]
-public class ControlsAiMosquito : Controls
+public class ControlsAiMosquito : ControlsAi
 {
     public Vector3 _targetPosition;
 

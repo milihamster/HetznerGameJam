@@ -147,13 +147,7 @@ public class SpawnManager : MonoBehaviour
 
         if(worldCollider.bounds.Contains(spawnPoint))
         {
-            SpawnAnimal(animal, area, grounded);
-        }
-
-        if(randomX < LowestX)
-        {
-            LowestX = randomX;
-            print("LOWEST X: " + LowestX);
+            return SpawnAnimal(animal, area, grounded);
         }
 
         if(grounded)
