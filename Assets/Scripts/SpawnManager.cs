@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -28,6 +29,8 @@ public class SpawnManager : MonoBehaviour
     public List<SpawnableEntry> SpawnablesSea = new();
     public List<SpawnableEntry> SpawnablesLand = new();
     public List<SpawnableEntry> SpawnablesSky = new();
+
+    public GameObject level;
 
     public SpawnManager()
     {
@@ -139,6 +142,13 @@ public class SpawnManager : MonoBehaviour
         float randomX = UnityEngine.Random.Range(-area.localScale.x, area.localScale.x)/2;
         float randomY = UnityEngine.Random.Range(-area.localScale.y, area.localScale.y)/2;
         Vector3 spawnPoint = area.position + new Vector3(randomX, randomY);
+
+        PolygonCollider2D worldCollider = level.GetComponent<PolygonCollider2D>();
+
+        if(worldCollider.bounds.Contains(spawnPoint))
+        {
+            SpawnAnimal(animal, area, grounded);
+        }
 
         if(randomX < LowestX)
         {
