@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        RespawnPlayer();
+        //RespawnPlayer();
         //InvokeRepeating("SpawnPlanctons", 0, PlanctonSpawnRate);
 
         SpawnInitial(SpawnablesSea, SpawnAreaSea);
@@ -61,9 +61,9 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    public void RespawnPlayer()
+    public void RespawnPlayer(Vector3? overwritePosition = null)
     {
-        var animal = SpawnAnimal(GlobalDataSo.Instance.Animals.First(x => x.Level == 1).Prefab, SpawnAreaSea, false);
+        var animal = SpawnAnimal(GlobalDataSo.Instance.Animals.First(x => x.Level == 1).Prefab, SpawnAreaSea, false, overwritePosition);
         animal.GetComponent<ControlsAiFish>().enabled = false;
         animal.GetComponent<ControlsPlayer>().enabled = true;
 
@@ -136,21 +136,26 @@ public class SpawnManager : MonoBehaviour
 
     public static float LowestX;
 
-    Animal SpawnAnimal(Animal animal, Transform area, bool grounded)
+    Animal SpawnAnimal(Animal animal, Transform area, bool grounded, Vector3? overwritePosition = null)
     {
         // Bereich
         float randomX = UnityEngine.Random.Range(-area.localScale.x, area.localScale.x)/2;
         float randomY = UnityEngine.Random.Range(-area.localScale.y, area.localScale.y)/2;
         Vector3 spawnPoint = area.position + new Vector3(randomX, randomY);
 
-        PolygonCollider2D worldCollider = level.GetComponent<PolygonCollider2D>();
-
-        if(worldCollider.bounds.Contains(spawnPoint))
+        if (overwritePosition != null)
+            spawnPoint = overwritePosition.Value;
+        else
         {
-            return SpawnAnimal(animal, area, grounded);
+            PolygonCollider2D worldCollider = level.GetComponent<PolygonCollider2D>();
+
+            if (worldCollider.bounds.Contains(spawnPoint))
+            {
+                return SpawnAnimal(animal, area, grounded);
+            }
         }
 
-        if(grounded)
+        if (grounded)
         {
             RaycastHit hit;
             if(Physics.Raycast(spawnPoint, -Vector3.up, out hit))

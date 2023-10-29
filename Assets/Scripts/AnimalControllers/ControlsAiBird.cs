@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ControlsAiBird : ControlsAi
 {
-    public Vector3 _targetPosition;
+    public Vector3 ForceTargetPosition;
+    public Vector3 TargetPosition;
 
     [SerializeField]
     private float _startCooldown = 10;
@@ -21,7 +22,7 @@ public class ControlsAiBird : ControlsAi
 
     private void LateUpdate()
     {
-        Debug.DrawLine(transform.position, _targetPosition);
+        Debug.DrawLine(transform.position, TargetPosition);
     }
 
     protected override void HandleControls()
@@ -32,7 +33,7 @@ public class ControlsAiBird : ControlsAi
             if (AllowAttack && shouldIAttack == 1 && _attackingAnimal == null)
             {
                 // Try looking for lower level animal to attack
-                var surroundings = Physics2D.CircleCastAll(transform.position, _range / 2, _targetPosition, LayerMask.GetMask("Animals"));
+                var surroundings = Physics2D.CircleCastAll(transform.position, _range / 2, TargetPosition, LayerMask.GetMask("Animals"));
                 var lowerLevelAnimals = surroundings.Select(x => x.collider.gameObject.GetComponent<Animal>());
                 var lowerLevelAnimal = lowerLevelAnimals.FirstOrDefault(x => x != null && x.AnimalSo?.Level < _animal.AnimalSo?.Level);
                 if (lowerLevelAnimal != null)
@@ -45,37 +46,40 @@ public class ControlsAiBird : ControlsAi
             {
                 _attackingAnimal = null;
 
-                _targetPosition = transform.position + new Vector3(
+                TargetPosition = transform.position + new Vector3(
                     Random.Range(-_range, _range),
                     Random.Range(-_range, _range), 0);
 
                 // Stop birds from going too far below water level
                 // If they hit the ground, they'll stay there for a while
                 // since birds can't move when grounded
-                if (_targetPosition.y < -2.5f)
-                    _targetPosition += new Vector3(0, -_targetPosition.y, 0);
-                else if (_targetPosition.y > _maxHeight)
-                    _targetPosition += new Vector3(0, _maxHeight - _targetPosition.y, 0);
+                if (TargetPosition.y < -2.5f)
+                    TargetPosition += new Vector3(0, -TargetPosition.y, 0);
+                else if (TargetPosition.y > _maxHeight)
+                    TargetPosition += new Vector3(0, _maxHeight - TargetPosition.y, 0);
 
                 // Check if there's something between me and the random position
                 // Regenerate if that's the case
-                var hits = Physics2D.RaycastAll(transform.position, _targetPosition, _range, LayerMask.GetMask("World"));
+                var hits = Physics2D.RaycastAll(transform.position, TargetPosition, _range, LayerMask.GetMask("World"));
                 if (hits.Length <= 1)
                     _positionCooldown = Random.Range(0, _startCooldown);
             }
         }
-        else if (Vector3.Distance(_targetPosition, transform.position) < 0.25f)
+        else if (Vector3.Distance(TargetPosition, transform.position) < 0.25f)
             _positionCooldown = 0;
         else
             _positionCooldown -= Time.deltaTime;
 
         if (_attackingAnimal != null)
-            _targetPosition = _attackingAnimal.transform.position;
+            TargetPosition = _attackingAnimal.transform.position;
 
-        MovementVertical = _targetPosition.y - transform.position.y;
-        MovementHorizontal = _targetPosition.x - transform.position.x;
+        if (ForceTargetPosition != null)
+            TargetPosition = ForceTargetPosition;
 
-        Attack = _attackingAnimal != null;
+        MovementVertical = TargetPosition.y - transform.position.y;
+        MovementHorizontal = TargetPosition.x - transform.position.x;
+
+        Attack = _attackingAnimal != null && ForceTargetPosition == null;
 
         if (MovementHorizontal > _speed)
             MovementHorizontal = _speed;
