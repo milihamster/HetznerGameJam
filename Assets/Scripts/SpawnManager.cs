@@ -145,8 +145,6 @@ public class SpawnManager : MonoBehaviour
         float randomY = UnityEngine.Random.Range(-area.localScale.y, area.localScale.y) / 2;
         Vector3 spawnPoint = area.position + new Vector3(randomX, randomY);
 
-        PolygonCollider2D worldCollider = level.GetComponent<PolygonCollider2D>();
-
         if (overwritePosition != null)
             spawnPoint = overwritePosition.Value;
         else
