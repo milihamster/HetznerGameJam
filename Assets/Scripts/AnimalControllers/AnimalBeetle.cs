@@ -16,7 +16,6 @@ public class AnimalBeetle : Animal
 
     void FixedUpdate()
     {
-        _rigidbody.AddForce(-Physics.gravity, ForceMode2D.Force);  // Counter Gravity
         _rigidbody.AddForce(new(_controls.MovementHorizontal * 2, _controls.MovementVertical * 2));
 
     }
