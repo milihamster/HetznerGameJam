@@ -48,7 +48,7 @@ public class GameControllerMainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        Cursor.visible=false;
+        Cursor.visible=true;
         LeanTween.scale(gameObject, endScale, 0.5f);
         SceneManager.LoadScene("Game");
 
