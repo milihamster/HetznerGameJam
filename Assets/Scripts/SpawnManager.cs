@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        //RespawnPlayer();
+        RespawnPlayer();
         //InvokeRepeating("SpawnPlanctons", 0, PlanctonSpawnRate);
 
         SpawnInitial(SpawnablesSea, SpawnAreaSea);
