@@ -67,7 +67,9 @@ public class GameControllerScript : MonoBehaviour
     }
     public void Exit()
     {
+
         SceneManager.LoadScene("MainMenu");
+
         Cursor.visible = true;
     }
 
