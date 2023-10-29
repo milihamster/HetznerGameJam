@@ -51,6 +51,7 @@ public class GameControllerMainMenu : MonoBehaviour
         Cursor.visible=true;
         LeanTween.scale(gameObject, endScale, 0.5f);
         SceneManager.LoadScene("Game");
+        Timer.Start();
 
     }
 

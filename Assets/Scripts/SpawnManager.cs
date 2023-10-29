@@ -151,7 +151,7 @@ public class SpawnManager : MonoBehaviour
         {
             PolygonCollider2D worldCollider = level.GetComponent<PolygonCollider2D>();
 
-            if (worldCollider.bounds.Contains(spawnPoint))
+            if (worldCollider.OverlapPoint(spawnPoint))
             {
                 return SpawnAnimal(animal, area, grounded);
             }

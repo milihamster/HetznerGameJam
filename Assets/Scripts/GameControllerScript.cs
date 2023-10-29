@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using JetBrains.Annotations;
 
 public class GameControllerScript : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class GameControllerScript : MonoBehaviour
     public Vector3 endScale = Vector3.one;
 
     public bool GameIsRunning = true;
-
+    public TMP_Text clockText;
 
     void Update()
     {
@@ -22,7 +24,10 @@ public class GameControllerScript : MonoBehaviour
             ToggleGameMenu();
             
         }
-        
+        // Write to Textbar
+        clockText.text = Timer.ElapsedTime; ;
+       
+
     }
     
     public void ToggleGameMenu(){
@@ -37,6 +42,7 @@ public class GameControllerScript : MonoBehaviour
     }
     
     public void Pause(){
+        Timer.Pause();
         Cursor.visible = true;
         pauseScreen.SetActive(true);
         inGameMenu.SetActive(false);
@@ -51,6 +57,7 @@ public class GameControllerScript : MonoBehaviour
         GameIsRunning = false;
     }
     public void Resume(){
+        Timer.Resume();
         Cursor.visible = false;
         pauseScreen.SetActive(false);
         inGameMenu.SetActive(true);
@@ -67,7 +74,7 @@ public class GameControllerScript : MonoBehaviour
     }
     public void Exit()
     {
-
+        Timer.Reset();
         SceneManager.LoadScene("MainMenu");
 
         Cursor.visible = true;
@@ -77,13 +84,14 @@ public class GameControllerScript : MonoBehaviour
 
     public void Reset()
     {
+        Timer.Reset();
         SceneManager.LoadScene("Game");
         Cursor.visible = false;
     }
 
     public void GameOver()
     {
-
+        Timer.Pause();
         Cursor.visible = true;
         inGameMenu.SetActive(false);
         gameOver.SetActive(true);

@@ -6898,7 +6898,7 @@ GameObject:
   - component: {fileID: 1196809216}
   - component: {fileID: 1196809218}
   - component: {fileID: 1196809219}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LevelBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9879,13 +9879,15 @@ MonoBehaviour:
     Amount: 7
   - AnimalSo: {fileID: 11400000, guid: fce39d8880fc0eb47bf4f66700ef640c, type: 2}
     Amount: 4
+  - AnimalSo: {fileID: 11400000, guid: 9519ea2d5f0f912cab92b72037657ce9, type: 2}
+    Amount: 10
   SpawnablesSky:
   - AnimalSo: {fileID: 11400000, guid: 887d7c03ee338d54997bce12fb832451, type: 2}
     Amount: 7
   - AnimalSo: {fileID: 11400000, guid: 1bd20b04ab9a4f246a67658567223d65, type: 2}
     Amount: 4
   - AnimalSo: {fileID: 11400000, guid: 3bdfeda8baf546cd39daf700dbf9e9cb, type: 2}
-    Amount: 10
+    Amount: 20
   level: {fileID: 1196809215}
 --- !u!4 &1738868318
 Transform:
