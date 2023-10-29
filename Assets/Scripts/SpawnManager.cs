@@ -113,6 +113,8 @@ public class SpawnManager : MonoBehaviour
             newAnimal.GetComponent<ControlsAi>().enabled = false;
             newAnimal.GetComponent<ControlsPlayer>().enabled = true;
 
+            SoundController.Instance.PlaySoundEffect(newAnimal.AnimalSo.levelUpSound);
+
             CameraController.Instance.Target = newAnimal.transform;
             CameraController.Instance.SetCameraSize(newAnimal.AnimalSo.cameraSize);
         }

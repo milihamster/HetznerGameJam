@@ -19,3 +19,4 @@ MonoBehaviour:
   Level: 2
   XpUntilLevelup: 50
   cameraSize: 3
+  levelUpSound: {fileID: 8300000, guid: a6a9d6abb247b6146a5a1b3a8f9c8a81, type: 3}
