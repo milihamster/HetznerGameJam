@@ -8,6 +8,7 @@ public class VolumeController : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider, effectSlider, musicSlider;
     [SerializeField] private AudioMixer mixer;
+    [SerializeField] Toggle ai;
     void Start()
     {
         if (PlayerPrefs.HasKey("masterVolume"))
@@ -41,6 +42,17 @@ public class VolumeController : MonoBehaviour
         {
             PlayerPrefs.SetFloat("musicVolume", 1);
             SetMusicAudio();
+        }
+
+        if (PlayerPrefs.HasKey("ai"))
+        {
+            ToggleAI();
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ai", 1);
+            ToggleAI();
+
         }
 
 
@@ -81,5 +93,27 @@ public class VolumeController : MonoBehaviour
 
 
     }
-   
+
+
+    public void ToggleAI()
+    {
+
+        int enable = ai.isOn ? 1 : 0;
+        PlayerPrefs.SetInt("Endless", enable);
+        if (ai.isOn)
+        {
+            //ControllAI.blabal
+        }
+        else
+        {
+            //ControllAI.blabal
+        }
+
+
+
+    }
+
+
+
+
 }
