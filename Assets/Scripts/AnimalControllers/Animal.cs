@@ -32,6 +32,9 @@ public abstract class Animal : MonoBehaviour
 
     private float _attackCooldown;
 
+    public AudioClip deathSound;
+    public AudioClip killSound;
+
 
     void Start()
     {
@@ -92,6 +95,7 @@ public abstract class Animal : MonoBehaviour
                 LeanTween.move(gameObject, animal.transform.position, 0.5f)
                     .setEaseInOutBounce();
 
+                SoundController.Instance.PlaySoundEffect(killSound);
                 animal.Kill();
             }
             else
@@ -113,6 +117,7 @@ public abstract class Animal : MonoBehaviour
     {
         OnDeath.Invoke();
         EffectsManager.Instance.SpawnEffect(_prefabDeathParticles ?? GlobalDataSo.Instance.PrefabDefaultDeathEffect, transform.position);
+        SoundController.Instance.PlaySoundEffect(deathSound);
         Destroy(gameObject);
     }
 

@@ -307,6 +307,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   IsGrounded: 0
+  deathSound: {fileID: 8300000, guid: 9140680968312b54c98f7b052a0da38a, type: 3}
+  killSound: {fileID: 8300000, guid: 9e2332c5ae7484444accef54f9dce8c6, type: 3}
   _maxSpeed: 0.5
 --- !u!114 &8283118011485906713
 MonoBehaviour:

@@ -10048,6 +10048,7 @@ MonoBehaviour:
   - AnimalSo: {fileID: 11400000, guid: 3bdfeda8baf546cd39daf700dbf9e9cb, type: 2}
     Amount: 20
   level: {fileID: 1196809215}
+  levelUpSound: {fileID: 8300000, guid: a6a9d6abb247b6146a5a1b3a8f9c8a81, type: 3}
 --- !u!4 &1738868318
 Transform:
   m_ObjectHideFlags: 0
