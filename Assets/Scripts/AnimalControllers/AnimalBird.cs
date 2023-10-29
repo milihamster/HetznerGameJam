@@ -6,6 +6,8 @@ public class AnimalBird : Animal
 {
     [SerializeField]
     private float _maxSpeed = 3;
+    [SerializeField]
+    private bool _wontDrown = false;
 
     void LateUpdate()
     {
@@ -14,6 +16,10 @@ public class AnimalBird : Animal
             _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
 
         _animator?.SetBool("Standing", IsGrounded);
+
+        // Kill if drowning
+        if (transform.position.y < -1 && !_wontDrown)
+            Kill();
     }
 
     void FixedUpdate()
