@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    void Awake()
     {
         _camera = GetComponentInChildren<Camera>();
 
@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
         if (Target == null)
         {
             var targets = Transform.FindObjectsOfType<ControlsPlayer>();
-            Target = targets.FirstOrDefault(x => x.isActiveAndEnabled).transform; 
+            Target = targets.FirstOrDefault(x => x.isActiveAndEnabled)?.transform; 
         }
     }
 
