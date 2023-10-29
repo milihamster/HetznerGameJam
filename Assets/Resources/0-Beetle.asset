@@ -18,3 +18,5 @@ MonoBehaviour:
   Prefab: {fileID: 2783957194397378607, guid: db998f8fe8983feba8465a53f9fa83eb, type: 3}
   Level: 0
   XpUntilLevelup: 150
+  cameraSize: 0
+  levelUpSound: {fileID: 8300000, guid: a6a9d6abb247b6146a5a1b3a8f9c8a81, type: 3}

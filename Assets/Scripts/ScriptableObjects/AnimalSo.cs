@@ -13,4 +13,6 @@ public class AnimalSo : ScriptableObject
     public float Level;
     public int XpUntilLevelup;
     public float cameraSize;
+
+    public AudioClip levelUpSound;
 }
