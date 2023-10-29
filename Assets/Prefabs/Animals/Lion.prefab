@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabDeathParticles: {fileID: 2708598583397607910, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
-  Experience: 30
+  Experience: 50
   AnimalSo: {fileID: 11400000, guid: fce39d8880fc0eb47bf4f66700ef640c, type: 2}
   OnDeath:
     m_PersistentCalls:
