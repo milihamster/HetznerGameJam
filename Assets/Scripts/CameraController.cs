@@ -31,7 +31,13 @@ public class CameraController : MonoBehaviour
 
     public void SetCameraSize(float newSize)
     {
-        _camera.orthographicSize = newSize;
+        LeanTween.cancel(_camera.gameObject);
+        LeanTween.value(_camera.gameObject, _camera.orthographicSize, newSize, 0.5f)
+            .setOnUpdate((float val) =>
+            {
+                _camera.orthographicSize = val;
+            })
+            .setEaseInOutSine();
     }
 
     void Update()
