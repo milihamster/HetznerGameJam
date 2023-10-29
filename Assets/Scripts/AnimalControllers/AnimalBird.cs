@@ -12,6 +12,8 @@ public class AnimalBird : Animal
         // Reset speed to _maxSpeed if the Rigidbody is moving too fast
         if (_rigidbody.velocity.magnitude > _maxSpeed)
             _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
+
+        _animator?.SetBool("Standing", IsGrounded);
     }
 
     void FixedUpdate()
