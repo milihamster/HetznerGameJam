@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5288103646350177630}
   - component: {fileID: 4277529432135502820}
   - component: {fileID: 5523251738284685472}
+  - component: {fileID: 1804452105327689924}
   m_Layer: 7
   m_Name: Eagle
   m_TagString: Untagged
@@ -140,6 +141,7 @@ MonoBehaviour:
       m_Calls: []
   IsGrounded: 0
   _maxSpeed: 4
+  _wontDrown: 0
 --- !u!114 &5288103646350177630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementHorizontal: 0
   MovementVertical: 0
-  _targetPosition: {x: 0, y: 0, z: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
   _startCooldown: 10
   _range: 10
   _speed: 0.4
@@ -208,6 +210,27 @@ CapsuleCollider2D:
   m_Offset: {x: -0.000000020043869, y: -0.16814017}
   m_Size: {x: 1.9420007, y: 1.1185588}
   m_Direction: 1
+--- !u!95 &1804452105327689924
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773661022676359040}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b4b37a9994843f84cb6719ec70562c53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7010014507132407019
 GameObject:
   m_ObjectHideFlags: 0
