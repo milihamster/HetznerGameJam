@@ -7,10 +7,14 @@ using UnityEngine;
 /// </summary>
 public abstract class ControlsAi : Controls
 {
+    public static bool AllowAttack = true;
+
+    protected Animal _animal;
+
     void Start()
     {
-        var animal = GetComponent<Animal>();
-        animal.OnDeath.AddListener(() =>
-            SpawnManager.Instance.RespawnAnimal(animal));
+        _animal = GetComponent<Animal>();
+        _animal.OnDeath.AddListener(() =>
+            SpawnManager.Instance.RespawnAnimal(_animal));
     }
 }
