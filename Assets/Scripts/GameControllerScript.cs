@@ -85,6 +85,7 @@ public class GameControllerScript : MonoBehaviour
     public void Reset()
     {
         Timer.Reset();
+        Timer.Start();
         SceneManager.LoadScene("Game");
         Cursor.visible = false;
     }
