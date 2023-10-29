@@ -4,6 +4,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameControllerMainMenu : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameControllerMainMenu : MonoBehaviour
     public GameObject MainMenu;
     public GameObject SettingsMenu;
     public GameObject Credits;
+    public GameObject HelpButton;
+    public GameObject HelpMenu;
 
     public float popDuration = 1; 
     public Vector3 startScale = Vector3.zero;
@@ -24,12 +27,14 @@ public class GameControllerMainMenu : MonoBehaviour
         Cursor.visible = true;
         SettingsMenu.SetActive(false);
         Credits.SetActive(false);
+        HelpButton.SetActive(true);
         //Animation(GameName, 0.5f);
        // Animation(MainMenu, 1f);
         LeanTween.scale(GameName, new Vector3(1, 1, 1), 0.0f);
         LeanTween.scale(MainMenu, new Vector3(1, 1, 1), 0.0f);
+        LeanTween.scale(HelpButton, new Vector3(1, 1, 1), 0.0f);
 
-      
+
 
 
     }
@@ -111,6 +116,33 @@ public class GameControllerMainMenu : MonoBehaviour
         Credits.SetActive(false);
         Credits.transform.localScale = startScale;
         LeanTween.scale(Credits, startScale, 0.2f).setDelay(0.1f);
+        LeanTween.scale(MainMenu, endScale, 0.2f).setDelay(0.1f);
+
+    }
+
+
+    public void OpenHelp()
+    {
+        Cursor.visible = true;
+        GameName.SetActive(false);
+        MainMenu.SetActive(false);
+        HelpMenu.SetActive(true);
+        HelpMenu.transform.localScale = startScale;
+        LeanTween.scale(MainMenu, startScale, 0.2f).setDelay(0.1f);
+        LeanTween.scale(HelpMenu, endScale, 0.2f).setDelay(0.1f);
+
+
+
+    }
+    public void CloseHelp()
+    {
+
+        Cursor.visible = true;
+        GameName.SetActive(true);
+        MainMenu.SetActive(true);
+        HelpMenu.SetActive(false);
+        HelpMenu.transform.localScale = startScale;
+        LeanTween.scale(HelpMenu, startScale, 0.2f).setDelay(0.1f);
         LeanTween.scale(MainMenu, endScale, 0.2f).setDelay(0.1f);
 
     }

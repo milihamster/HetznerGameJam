@@ -25,7 +25,7 @@ public class GameControllerScript : MonoBehaviour
             
         }
         // Write to Textbar
-        clockText.text = Timer.ElapsedTime; ;
+        clockText.text = Timer.ElapsedTime;
        
 
     }
