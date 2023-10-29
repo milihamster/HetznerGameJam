@@ -95,7 +95,7 @@ public abstract class Animal : MonoBehaviour
                 LeanTween.move(gameObject, animal.transform.position, 0.5f)
                     .setEaseInOutBounce();
 
-                SoundController.Instance.PlaySoundEffect(killSound);
+                //SoundController.Instance.PlaySoundEffect(killSound);
                 animal.Kill();
             }
             else
