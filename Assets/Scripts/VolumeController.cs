@@ -98,15 +98,16 @@ public class VolumeController : MonoBehaviour
     public void ToggleAI()
     {
 
-        int enable = ai.isOn ? 1 : 0;
+        int enable = ai.isOn ? 1 : 0; 
         PlayerPrefs.SetInt("Endless", enable);
         if (ai.isOn)
         {
             //ControllAI.blabal
+            ControlsAi.AllowAttack = true;
         }
         else
         {
-            //ControllAI.blabal
+            ControlsAi.AllowAttack = false;
         }
 
 

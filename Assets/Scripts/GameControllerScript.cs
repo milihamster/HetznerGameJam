@@ -37,6 +37,7 @@ public class GameControllerScript : MonoBehaviour
     }
     
     public void Pause(){
+        Cursor.visible = true;
         pauseScreen.SetActive(true);
         inGameMenu.SetActive(false);
 
@@ -50,6 +51,7 @@ public class GameControllerScript : MonoBehaviour
         GameIsRunning = false;
     }
     public void Resume(){
+        Cursor.visible = false;
         pauseScreen.SetActive(false);
         inGameMenu.SetActive(true);
 
@@ -66,6 +68,7 @@ public class GameControllerScript : MonoBehaviour
     public void Exit()
     {
         SceneManager.LoadScene("MainMenu");
+        Cursor.visible = true;
     }
 
 
@@ -73,12 +76,13 @@ public class GameControllerScript : MonoBehaviour
     public void Reset()
     {
         SceneManager.LoadScene("Game");
+        Cursor.visible = false;
     }
 
     public void GameOver()
     {
 
-
+        Cursor.visible = true;
         inGameMenu.SetActive(false);
         gameOver.SetActive(true);
 

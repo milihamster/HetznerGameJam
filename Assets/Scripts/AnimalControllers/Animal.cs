@@ -66,6 +66,11 @@ public abstract class Animal : MonoBehaviour
             transform.localScale = new Vector3(-_size, _size, _size);
     }
 
+    public void SetControls(Controls controls)
+    {
+        this._controls = controls;
+    }
+
     public void Attack()
     {
         var animal = _attackTrigger.TargetList.FirstOrDefault();
