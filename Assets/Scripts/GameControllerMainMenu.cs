@@ -24,9 +24,9 @@ public class GameControllerMainMenu : MonoBehaviour
         Cursor.visible = true;
         SettingsMenu.SetActive(false);
         Credits.SetActive(false);
-        Animation(GameName, 0.5f);
-        Animation(MainMenu, 1f);
-        LeanTween.scale(GameName, new Vector3(1, 1, 1), 0.0f); ;
+        //Animation(GameName, 0.5f);
+       // Animation(MainMenu, 1f);
+        LeanTween.scale(GameName, new Vector3(1, 1, 1), 0.0f);
         LeanTween.scale(MainMenu, new Vector3(1, 1, 1), 0.0f);
 
       
