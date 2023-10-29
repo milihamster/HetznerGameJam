@@ -10,7 +10,10 @@ public class ControlsPlayer : Controls
     void Start()
     {
         var animal = GetComponent<Animal>();
-        animal.OnDeath.AddListener(() => SpawnManager.Instance.RespawnPlayer());
+        animal.OnDeath.AddListener(() => {
+            SpawnManager.Instance.RespawnPlayer();
+            Timer.Reset();
+        });
 
         //var canvasExperience = Instantiate(GlobalDataSo.Instance.PrefabCanvasExperience.gameObject, transform);
         //animal.OnExperience.AddListener(() => canvasExperience.GetComponent<UiCanvasExperience>()

@@ -15,6 +15,10 @@ public class AnimalGround : Animal
         if (_rigidbody.velocity.magnitude > _maxSpeed)
             _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
 
+        // Standing Animation if animal is standing around
+        _animator?.SetBool("Standing",
+            Vector2.Distance(_rigidbody.velocity, Vector2.zero) < 0.2f);
+
         // Jump if animal is on ground
         if (_controls.Special && IsGrounded)
             _rigidbody.AddForce(new Vector2(0, 12), ForceMode2D.Impulse);
