@@ -19,7 +19,7 @@ public class GameControllerMainMenu : MonoBehaviour
     void Start()
     {
 
-        Cursor.visible = false;
+        Cursor.visible = true;
         SettingsMenu.SetActive(false);
         Credits.SetActive(false);
         Animation(GameName, 0.5f);
@@ -44,6 +44,7 @@ public class GameControllerMainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        Cursor.visible=false;
         LeanTween.scale(gameObject, endScale, 0.5f);
         SceneManager.LoadScene("Game");
 
@@ -72,7 +73,7 @@ public class GameControllerMainMenu : MonoBehaviour
     }
     public void CloseSettings()
     {
-        Cursor.visible = false;
+        Cursor.visible = true;
         GameName.SetActive(true);
         MainMenu.SetActive(true);
         SettingsMenu.SetActive(false);
@@ -99,7 +100,7 @@ public class GameControllerMainMenu : MonoBehaviour
     public void CloseCredits()
     {
 
-        Cursor.visible = false;
+        Cursor.visible = true;
         GameName.SetActive(true);
         MainMenu.SetActive(true);
         Credits.SetActive(false);
