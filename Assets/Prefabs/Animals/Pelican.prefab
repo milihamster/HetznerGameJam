@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabDeathParticles: {fileID: 2708598583397607910, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
-  Experience: 50
+  Experience: 100
   AnimalSo: {fileID: 11400000, guid: 1bd20b04ab9a4f246a67658567223d65, type: 2}
   OnDeath:
     m_PersistentCalls:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementHorizontal: 0
   MovementVertical: 0
-  _targetPosition: {x: 0, y: 0, z: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
   _startCooldown: 10
   _range: 6
   _speed: 0.3

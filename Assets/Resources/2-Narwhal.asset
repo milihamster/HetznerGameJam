@@ -17,5 +17,5 @@ MonoBehaviour:
   Type: 0
   Prefab: {fileID: 848424397429751144, guid: 466cba13273604a4c90c4544bb7035bb, type: 3}
   Level: 2
-  XpUntilLevelup: 250
+  XpUntilLevelup: 50
   cameraSize: 3
