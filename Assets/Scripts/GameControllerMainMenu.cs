@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,16 +17,19 @@ public class GameControllerMainMenu : MonoBehaviour
     public Vector3 startScale = Vector3.zero;
     public Vector3 endScale = Vector3.one;
 
-    void Start()
+
+    void Awake()
     {
 
         Cursor.visible = true;
         SettingsMenu.SetActive(false);
         Credits.SetActive(false);
-        Animation(GameName, 0.5f);
-        Animation(MainMenu, 1f);
+        //Animation(GameName, 0.5f);
+       // Animation(MainMenu, 1f);
+        LeanTween.scale(GameName, new Vector3(1, 1, 1), 0.0f);
+        LeanTween.scale(MainMenu, new Vector3(1, 1, 1), 0.0f);
 
-
+      
 
 
     }

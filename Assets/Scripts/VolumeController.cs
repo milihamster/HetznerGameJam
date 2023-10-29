@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System;
 
 public class VolumeController : MonoBehaviour
 {
@@ -98,17 +99,27 @@ public class VolumeController : MonoBehaviour
     public void ToggleAI()
     {
 
-        int enable = ai.isOn ? 1 : 0; 
-        PlayerPrefs.SetInt("Endless", enable);
-        if (ai.isOn)
+        try
         {
-            //ControllAI.blabal
-            ControlsAi.AllowAttack = true;
-        }
-        else
+            int enable = ai.isOn ? 1 : 0;
+            PlayerPrefs.SetInt("Endless", enable);
+            if (ai.isOn)
+            {
+                //ControllAI.blabal
+                ControlsAi.AllowAttack = true;
+            }
+            else
+            {
+                ControlsAi.AllowAttack = false;
+            }
+
+
+        } catch(Exception x)
         {
-            ControlsAi.AllowAttack = false;
+
         }
+
+
 
 
 
