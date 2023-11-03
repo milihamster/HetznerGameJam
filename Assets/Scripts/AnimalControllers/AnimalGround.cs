@@ -30,7 +30,7 @@ public class AnimalGround : Animal
 
     void FixedUpdate()
     {
-        _rigidbody.AddForce(new(_controls.MovementHorizontal * 20, 0));
+        _rigidbody.AddForce(new(_controls.MovementHorizontal * 60, 0));
     }
 }
 
