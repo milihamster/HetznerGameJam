@@ -63,6 +63,15 @@ public class SpawnManager : MonoBehaviour
 
     public void RespawnPlayer(Vector3? overwritePosition = null)
     {
+        // Hard return if there's already a player in level
+        // not necessarily the cleanest fix, but hey
+        var playerControls = Transform.FindObjectsOfType<ControlsPlayer>(false);
+        if (playerControls.Any(x => x.enabled))
+        {
+            Debug.LogError($"Tried Respawning Player, but PlayerControls already exist in the Level: {playerControls.First(x => x.enabled)}");   
+            return;
+        }
+
         var animal = SpawnAnimal(GlobalDataSo.Instance.Animals.First(x => x.Level == 1).Prefab, SpawnAreaSea, false, overwritePosition);
         animal.GetComponent<ControlsAiFish>().enabled = false;
         animal.GetComponent<ControlsPlayer>().enabled = true;
