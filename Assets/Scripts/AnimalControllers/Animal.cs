@@ -13,13 +13,14 @@ public abstract class Animal : MonoBehaviour
     [SerializeField]
     private ParticleSystem _attackParticles;
 
+    public bool AttackAlwaysSucceeds = false;
     public int Experience;
     public AnimalSo AnimalSo;
 
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;
     protected SpriteRenderer _spriteRenderer;
-    protected AnimalAttackTrigger _attackTrigger;
+    public AnimalAttackTrigger AttackTrigger;
     public Animator Animator;
 
     public UnityEvent OnDeath = new();
@@ -52,7 +53,7 @@ public abstract class Animal : MonoBehaviour
         _controls = controlComponents.FirstOrDefault(x => x.enabled);
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _attackTrigger = GetComponentInChildren<AnimalAttackTrigger>();
+        AttackTrigger = GetComponentInChildren<AnimalAttackTrigger>();
         TryGetComponent<Animator>(out Animator);
         _collider = GetComponent<Collider2D>();
 
@@ -98,10 +99,10 @@ public abstract class Animal : MonoBehaviour
 
     public void Attack()
     {
-        var animal = _attackTrigger.TargetList.FirstOrDefault();
+        var animal = AttackTrigger.TargetList.FirstOrDefault();
         if (animal != null)
         {
-            if (AnimalSo.Level > animal.AnimalSo.Level)
+            if (AnimalSo.Level > animal.AnimalSo.Level || AttackAlwaysSucceeds)
             {
                 AddExperience(animal.Experience);
 

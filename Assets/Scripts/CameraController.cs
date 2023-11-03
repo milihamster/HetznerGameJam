@@ -52,12 +52,12 @@ public class CameraController : MonoBehaviour
             var distance = Vector2.Distance(
                 new(transform.position.x, transform.position.y),
                 new(Target.position.x, Target.position.y));
-            if (distance > 3)
+            if (distance > 5)
             {
                 LeanTween.move(gameObject, Target.position, 1f)
                     .setEaseOutSine();
             }
-            else if(distance > 0.75f)
+            else if(distance > 0.3f)
             {
                 LeanTween.value(gameObject, 0, 1, 0.25f)
                     .setOnUpdate((float percentage) => {
