@@ -25,6 +25,7 @@ public abstract class Animal : MonoBehaviour
 
     public UnityEvent OnDeath = new();
     public UnityEvent OnExperience = new();
+    public UnityEvent OnBite = new();
 
     protected Controls _controls;
 
@@ -99,6 +100,8 @@ public abstract class Animal : MonoBehaviour
 
     public void Attack()
     {
+        OnBite.Invoke();
+
         var animal = AttackTrigger.TargetList.FirstOrDefault();
         if (animal != null)
         {

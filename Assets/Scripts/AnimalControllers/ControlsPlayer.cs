@@ -23,6 +23,8 @@ public class ControlsPlayer : Controls
         animal.OnExperience.AddListener(() => UiCanvasExperience.Instance
             .SetValue(animal.Experience, animal.AnimalSo.XpUntilLevelup));
 
+        animal.OnBite.AddListener(() => SoundController.Instance.PlaySoundEffect(animal.killSound));
+
         animal.OnDeath.AddListener(() => SoundController.Instance.PlaySoundEffect(animal.deathSound));
 
         gameObject.name = $"PLAYER: {name}";
