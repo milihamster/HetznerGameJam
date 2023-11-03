@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 // TODO: Fix weird blue flash
@@ -48,12 +49,20 @@ public class CameraController : MonoBehaviour
         // Move camera there smoothly
         if(!LeanTween.isTweening(gameObject) && Target != null)
         {
-            if (Vector2.Distance(
+            var distance = Vector2.Distance(
                 new(transform.position.x, transform.position.y),
-                new(Target.position.x, Target.position.y)) > 10)
+                new(Target.position.x, Target.position.y));
+            if (distance > 3)
             {
                 LeanTween.move(gameObject, Target.position, 1f)
                     .setEaseOutSine();
+            }
+            else if(distance > 0.75f)
+            {
+                LeanTween.value(gameObject, 0, 1, 0.25f)
+                    .setOnUpdate((float percentage) => {
+                        transform.position = Vector3.Lerp(transform.position, Target.position, percentage);
+                    });
             }
             else
                 transform.position = new(

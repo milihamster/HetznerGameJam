@@ -57,7 +57,11 @@ public abstract class Animal : MonoBehaviour
         _collider = GetComponent<Collider2D>();
 
         if (_attackParticles)
+        {
             _attackParticleSize = _attackParticles.transform.localScale;
+            var main = _attackParticles.main;
+            main.scalingMode = ParticleSystemScalingMode.Local;
+        }
     }
 
     void Update()
@@ -74,15 +78,15 @@ public abstract class Animal : MonoBehaviour
         if (_rigidbody.velocity.x < -0.1f)
         {
             transform.localScale = Vector3.one * _size;
-            if (_attackParticles)
-                _attackParticles.transform.localScale = _attackParticleSize;
+            //if (_attackParticles)
+            //    _attackParticles.transform.localScale = _attackParticleSize;
         }
         else if (_rigidbody.velocity.x > 0.1f)
         {
             transform.localScale = new Vector3(-_size, _size, _size);
-            if (_attackParticles)
-                _attackParticles.transform.localScale = 
-                    _attackParticleSize + new Vector3(0, -_attackParticleSize.y*2, 0);
+            //if (_attackParticles)
+            //    _attackParticles.transform.localScale = 
+            //        _attackParticleSize + new Vector3(0, -_attackParticleSize.y*2, 0);
         }
     }
 
