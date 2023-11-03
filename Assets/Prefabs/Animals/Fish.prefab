@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 790304615633111881}
   - component: {fileID: 1873591383335660109}
   - component: {fileID: 5728891413965419647}
+  - component: {fileID: 3892276805574057525}
   m_Layer: 7
   m_Name: Fish
   m_TagString: Untagged
@@ -105,9 +106,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabDeathParticles: {fileID: 2708598583397607910, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
   _attackParticles: {fileID: 3968525423979450985}
+  AttackAlwaysSucceeds: 0
   Experience: 10
   AnimalSo: {fileID: 11400000, guid: bb2c4d1a471faf549b4247afb9360184, type: 2}
-  Animator: {fileID: 0}
+  AttackTrigger: {fileID: 0}
+  Animator: {fileID: 3892276805574057525}
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -212,6 +215,27 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0022122904, y: -0.034291286}
   m_Size: {x: 0.84426236, y: 0.48366532}
   m_Direction: 1
+--- !u!95 &3892276805574057525
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980408401495858665}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf8ce1c961b971a4daabc93a5fe84b7f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1043179206475836659
 GameObject:
   m_ObjectHideFlags: 0
