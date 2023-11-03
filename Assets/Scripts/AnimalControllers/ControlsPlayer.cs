@@ -11,8 +11,10 @@ public class ControlsPlayer : Controls
     {
         var animal = GetComponent<Animal>();
         animal.OnDeath.AddListener(() => {
-            SpawnManager.Instance.RespawnPlayer();
-            Timer.Reset();
+            Timer.Pause();
+
+            CameraController.Instance.SetCameraSize(CameraController.Instance.Camera.orthographicSize + 2, 
+                4, () => SpawnManager.Instance.RespawnPlayer());
         });
 
         UiCanvasExperience.Instance.SetValue(animal.Experience, 0);
@@ -22,6 +24,8 @@ public class ControlsPlayer : Controls
             .SetValue(animal.Experience, animal.AnimalSo.XpUntilLevelup));
 
         animal.OnDeath.AddListener(() => SoundController.Instance.PlaySoundEffect(animal.deathSound));
+
+        gameObject.name = $"PLAYER: {name}";
     }
 
     protected override void HandleControls()

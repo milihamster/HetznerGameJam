@@ -10,6 +10,9 @@ public abstract class Animal : MonoBehaviour
     [SerializeField]
     private ParticleSystem _prefabDeathParticles;
 
+    [SerializeField]
+    private ParticleSystem _attackParticles;
+
     public int Experience;
     public AnimalSo AnimalSo;
 
@@ -27,6 +30,7 @@ public abstract class Animal : MonoBehaviour
     private SpawnManager _spawnManager;
 
     protected float _size = 1;
+    protected Vector3 _attackParticleSize = Vector3.one;
 
     public bool IsGrounded;
 
@@ -51,6 +55,9 @@ public abstract class Animal : MonoBehaviour
         _attackTrigger = GetComponentInChildren<AnimalAttackTrigger>();
         TryGetComponent<Animator>(out Animator);
         _collider = GetComponent<Collider2D>();
+
+        if (_attackParticles)
+            _attackParticleSize = _attackParticles.transform.localScale;
     }
 
     void Update()
@@ -65,9 +72,18 @@ public abstract class Animal : MonoBehaviour
 
         // Flip if Animal is heading the other way
         if (_rigidbody.velocity.x < -0.1f)
+        {
             transform.localScale = Vector3.one * _size;
+            if (_attackParticles)
+                _attackParticles.transform.localScale = _attackParticleSize;
+        }
         else if (_rigidbody.velocity.x > 0.1f)
+        {
             transform.localScale = new Vector3(-_size, _size, _size);
+            if (_attackParticles)
+                _attackParticles.transform.localScale = 
+                    _attackParticleSize + new Vector3(0, -_attackParticleSize.y*2, 0);
+        }
     }
 
     public void SetControls(Controls controls)
@@ -84,26 +100,65 @@ public abstract class Animal : MonoBehaviour
             {
                 AddExperience(animal.Experience);
 
-                if (Experience >= AnimalSo.XpUntilLevelup)
-                {
-                    EffectsManager.Instance.SpawnEffect(
-                        GlobalDataSo.Instance.PrefabLevelUpEffect,
-                        transform.position);
-                    _spawnManager.LevelUp(this);
-                }
+                PlayAttackParticles();
 
                 LeanTween.move(gameObject, animal.transform.position, 0.5f)
+                    .setOnComplete(() =>
+                    {
+                        StopAttackParticles();
+
+                        if (Experience >= AnimalSo.XpUntilLevelup)
+                        {
+                            EffectsManager.Instance.SpawnEffect(
+                                GlobalDataSo.Instance.PrefabLevelUpEffect,
+                                transform.position);
+                            _spawnManager.LevelUp(this);
+                        }
+                    })
                     .setEaseInOutBounce();
 
                 //SoundController.Instance.PlaySoundEffect(killSound);
+                print($"{name} killed {animal.name}");
                 animal.Kill();
             }
             else
             {
+                print($"{animal.name} killed {name}");
+
+                animal.PlayAttackParticles();
                 LeanTween.move(animal.gameObject, transform.position, 0.5f)
+                    .setOnComplete(() =>
+                    {
+                        animal.StopAttackParticles();
+                    })
                     .setEaseInOutBounce();
                 Kill();
             }
+        }
+    }
+
+    public void PlayAttackParticles()
+    {
+        if (_attackParticles != null)
+        {
+            //_attackParticles.gameObject.SetActive(true);
+            _attackParticles.Play();
+            LeanTween.cancel(_attackParticles.gameObject);
+            LeanTween.scale(_attackParticles.gameObject, _attackParticleSize, 0.2f)
+                .setFrom(Vector3.zero)
+                .setEaseOutBounce();
+        }
+    }
+
+    public void StopAttackParticles()
+    {
+        if(_attackParticles != null)
+        {
+            //_attackParticles.gameObject.SetActive(false);
+            LeanTween.cancel(_attackParticles.gameObject);
+            LeanTween.scale(_attackParticles.gameObject, Vector3.zero, 0.2f)
+                .setOnComplete(() => _attackParticles.Stop())
+                .setEaseOutBounce();
         }
     }
 

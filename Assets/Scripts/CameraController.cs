@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ public class CameraController : MonoBehaviour
 
     public Transform Target;
 
-    private Camera _camera;
+    public Camera Camera;
 
     public CameraController()
     {
@@ -19,7 +20,7 @@ public class CameraController : MonoBehaviour
 
     void Awake()
     {
-        _camera = GetComponentInChildren<Camera>();
+        Camera = GetComponentInChildren<Camera>();
 
         // Automatically choose Player as Target if there isn't any
         if (Target == null)
@@ -29,14 +30,15 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void SetCameraSize(float newSize)
+    public void SetCameraSize(float newSize, float time = 1f, Action callback = null)
     {
-        LeanTween.cancel(_camera.gameObject);
-        LeanTween.value(_camera.gameObject, _camera.orthographicSize, newSize, 0.5f)
+        LeanTween.cancel(Camera.gameObject);
+        LeanTween.value(Camera.gameObject, Camera.orthographicSize, newSize, time)
             .setOnUpdate((float val) =>
             {
-                _camera.orthographicSize = val;
+                Camera.orthographicSize = val;
             })
+            .setOnComplete(() => callback?.Invoke())
             .setEaseInOutSine();
     }
 
