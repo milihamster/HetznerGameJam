@@ -61,6 +61,7 @@ public abstract class Animal : MonoBehaviour
             _attackParticleSize = _attackParticles.transform.localScale;
             var main = _attackParticles.main;
             main.scalingMode = ParticleSystemScalingMode.Local;
+            _attackParticles.Pause();
         }
     }
 
@@ -150,7 +151,7 @@ public abstract class Animal : MonoBehaviour
             LeanTween.cancel(_attackParticles.gameObject);
             LeanTween.scale(_attackParticles.gameObject, _attackParticleSize, 0.2f)
                 .setFrom(Vector3.zero)
-                .setEaseOutBounce();
+                .setEaseOutBounce();    
         }
     }
 
@@ -161,7 +162,7 @@ public abstract class Animal : MonoBehaviour
             //_attackParticles.gameObject.SetActive(false);
             LeanTween.cancel(_attackParticles.gameObject);
             LeanTween.scale(_attackParticles.gameObject, Vector3.zero, 0.2f)
-                .setOnComplete(() => _attackParticles.Stop())
+                .setOnComplete(() => _attackParticles.Pause())
                 .setEaseOutBounce();
         }
     }

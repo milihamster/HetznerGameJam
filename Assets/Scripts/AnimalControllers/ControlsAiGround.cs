@@ -39,11 +39,13 @@ public class ControlsAiGround : ControlsAi
                 {
                     _attackingAnimal = lowerLevelAnimal;
                     _positionCooldown = Random.Range(0, _startCooldown);
+                    _animal.PlayAttackParticles();
                 }
             }
             else
             {
                 _attackingAnimal = null;
+                _animal.StopAttackParticles();
 
                 float x = (Random.Range(0, 2) * 2 - 1) * Random.Range(0.1f * _range, _range);
                 _targetPosition = transform.position + Vector3.right * x;

@@ -40,11 +40,13 @@ public class ControlsAiBird : ControlsAi
                 {
                     _attackingAnimal = lowerLevelAnimal;
                     _positionCooldown = Random.Range(0, _startCooldown);
+                    _animal.PlayAttackParticles();
                 }
             }
             else
             {
                 _attackingAnimal = null;
+                _animal.StopAttackParticles();
 
                 TargetPosition = transform.position + new Vector3(
                     Random.Range(-_range, _range),
