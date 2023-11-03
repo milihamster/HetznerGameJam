@@ -69,6 +69,9 @@ public class SpawnManager : MonoBehaviour
 
         CameraController.Instance.Target = animal.transform;
         CameraController.Instance.SetCameraSize(animal.AnimalSo.cameraSize);
+
+        Timer.Reset();
+        Timer.Start();
     }
 
     public void RespawnAnimal(Animal animal)
